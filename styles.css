@@ -769,14 +769,18 @@ h1 {
 .plan-modal {
   position: fixed;
   inset: 0;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease-out;
 }
 
 .plan-modal.is-open {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .plan-backdrop {
@@ -789,8 +793,8 @@ h1 {
 .plan-dialog {
   position: relative;
   z-index: 1;
-  width: min(1040px, 100% - 32px);
-  max-height: min(640px, 100% - 40px);
+  width: min(1120px, 100% - 32px);
+  max-height: min(720px, 100% - 32px);
   border-radius: 22px;
   border: 1px solid rgba(148, 163, 184, 0.6);
   background: radial-gradient(
@@ -799,8 +803,18 @@ h1 {
       rgba(15, 23, 42, 0.98)
     ),
     rgba(15, 23, 42, 0.98);
-  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.95);
+  box-shadow: 0 34px 110px rgba(15, 23, 42, 0.98);
   overflow: hidden;
+  transform: translateY(10px) scale(0.96);
+  opacity: 0;
+  transition:
+    transform 220ms ease-out,
+    opacity 220ms ease-out;
+}
+
+.plan-modal.is-open .plan-dialog {
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
 .plan-dialog-inner {
@@ -863,7 +877,7 @@ h1 {
 
 .plan-panel {
   display: none;
-  max-height: calc(640px - 80px);
+  max-height: calc(720px - 88px);
 }
 
 .plan-panel.is-active {
