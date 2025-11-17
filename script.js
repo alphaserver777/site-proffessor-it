@@ -49,9 +49,91 @@ function initYear() {
   }
 }
 
+function openPlanModal(initialTargetId) {
+  const modal = document.getElementById('plan-modal');
+  if (!modal) return;
+
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  setActivePlanPanel(initialTargetId || 'plan-admin');
+}
+
+function closePlanModal() {
+  const modal = document.getElementById('plan-modal');
+  if (!modal) return;
+
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function setActivePlanPanel(targetId) {
+  if (!targetId) return;
+  const panels = document.querySelectorAll('.plan-panel');
+  panels.forEach((panel) => {
+    panel.classList.toggle('is-active', panel.id === targetId);
+  });
+
+  const links = document.querySelectorAll('.plan-sidebar-link');
+  links.forEach((btn) => {
+    btn.classList.toggle(
+      'is-active',
+      btn.getAttribute('data-plan-target') === targetId
+    );
+  });
+}
+
+function initPlanModal() {
+  const triggerButtons = document.querySelectorAll('.track-plan-btn');
+  if (!triggerButtons.length) return;
+
+  triggerButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-plan-target');
+      openPlanModal(target);
+    });
+  });
+
+  const modal = document.getElementById('plan-modal');
+  if (!modal) return;
+
+  modal.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+
+    if (target.hasAttribute('data-plan-close') || target === modal) {
+      closePlanModal();
+    }
+  });
+
+  const closeBtn = modal.querySelector('.plan-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closePlanModal);
+  }
+
+  const sidebarLinks = modal.querySelectorAll('.plan-sidebar-link');
+  sidebarLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const target = link.getAttribute('data-plan-target');
+      setActivePlanPanel(target);
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      const isOpen = modal.classList.contains('is-open');
+      if (isOpen) {
+        closePlanModal();
+      }
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initThemeToggle();
   initYear();
+  initPlanModal();
 });
-

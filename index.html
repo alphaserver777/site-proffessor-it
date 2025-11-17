@@ -29,6 +29,7 @@
         </div>
         <nav class="nav">
           <a href="#about" class="nav-link">Обо мне</a>
+          <a href="#tracks" class="nav-link">Темы</a>
           <a href="#who-for" class="nav-link">Кому полезно</a>
           <a href="#format" class="nav-link">Формат</a>
           <a href="#cta" class="nav-link nav-link-primary">Записаться</a>
@@ -176,6 +177,110 @@
               <span class="chip">Linux Hardening</span>
               <span class="chip">Monitoring &amp; Logs</span>
               <span class="chip">Incident Response</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="tracks">
+        <div class="container section-grid">
+          <div class="section-label">Темы</div>
+          <div class="section-content">
+            <h2>Направления, которые я преподаю</h2>
+            <p>
+              Мы можем сфокусироваться на одном направлении или собрать программу
+              из нескольких блоков — от классического администрирования до
+              продвинутых практик безопасности и DevOps.
+            </p>
+            <div class="cards-grid">
+              <article class="card">
+                <div class="card-tag">Администрирование</div>
+                <h3>Системное администрирование: Linux и Windows</h3>
+                <p>
+                  Установка и настройка систем, службы, права, резервное
+                  копирование, базовая безопасность и типовые задачи админа —
+                  на практике.
+                </p>
+                <button
+                  class="btn btn-outline track-plan-btn"
+                  data-plan-target="plan-admin"
+                >
+                  План занятий
+                </button>
+              </article>
+              <article class="card">
+                <div class="card-tag">Сети</div>
+                <h3>Компьютерные сети</h3>
+                <p>
+                  Модели OSI и TCP/IP, протоколы, маршрутизация, VLAN, VPN,
+                  балансировка, разбор типичных сетевых проблем в реальных
+                  сценариях.
+                </p>
+                <button
+                  class="btn btn-outline track-plan-btn"
+                  data-plan-target="plan-networks"
+                >
+                  План занятий
+                </button>
+              </article>
+              <article class="card">
+                <div class="card-tag">DevOps</div>
+                <h3>DevOps и автоматизация</h3>
+                <p>
+                  CI/CD, инфраструктура как код, контейнеризация, Kubernetes,
+                  мониторинг и логирование — сборка целостного конвейера поставки.
+                </p>
+                <button
+                  class="btn btn-outline track-plan-btn"
+                  data-plan-target="plan-devops"
+                >
+                  План занятий
+                </button>
+              </article>
+              <article class="card">
+                <div class="card-tag">DevSecOps</div>
+                <h3>DevOps с фокусом на безопасность</h3>
+                <p>
+                  Встраивание практик безопасности в процессы разработки и
+                  эксплуатации: секреты, сканирование, контроль доступа,
+                  надёжная инфраструктура.
+                </p>
+                <button
+                  class="btn btn-outline track-plan-btn"
+                  data-plan-target="plan-devsecops"
+                >
+                  План занятий
+                </button>
+              </article>
+              <article class="card">
+                <div class="card-tag">Pentest</div>
+                <h3>Пентест / Ethical Hacking</h3>
+                <p>
+                  Подход «мыслить как атакующий»: базовая методология, типичные
+                  уязвимости, безопасное тестирование и понимание того, как
+                  защищаться.
+                </p>
+                <button
+                  class="btn btn-outline track-plan-btn"
+                  data-plan-target="plan-pentest"
+                >
+                  План занятий
+                </button>
+              </article>
+              <article class="card">
+                <div class="card-tag">Security</div>
+                <h3>Информационная безопасность</h3>
+                <p>
+                  Модель угроз, базовые стандарты, hardening, журналы и инциденты,
+                  построение защиты как системы, а не набора разрозненных мер.
+                </p>
+                <button
+                  class="btn btn-outline track-plan-btn"
+                  data-plan-target="plan-infosec"
+                >
+                  План занятий
+                </button>
+              </article>
             </div>
           </div>
         </div>
@@ -334,6 +439,554 @@
       </section>
     </main>
 
+    <div class="plan-modal" id="plan-modal" aria-hidden="true">
+      <div class="plan-backdrop" data-plan-close></div>
+      <div class="plan-dialog" role="dialog" aria-modal="true">
+        <button class="plan-close" type="button" data-plan-close>×</button>
+        <div class="plan-dialog-inner">
+          <aside class="plan-sidebar">
+            <div class="plan-sidebar-title">Учебные планы</div>
+            <button
+              class="plan-sidebar-link"
+              type="button"
+              data-plan-target="plan-admin"
+            >
+              Системное администрирование
+            </button>
+            <button
+              class="plan-sidebar-link"
+              type="button"
+              data-plan-target="plan-networks"
+            >
+              Компьютерные сети
+            </button>
+            <button
+              class="plan-sidebar-link"
+              type="button"
+              data-plan-target="plan-devops"
+            >
+              DevOps
+            </button>
+            <button
+              class="plan-sidebar-link"
+              type="button"
+              data-plan-target="plan-devsecops"
+            >
+              DevOps с безопасностью
+            </button>
+            <button
+              class="plan-sidebar-link"
+              type="button"
+              data-plan-target="plan-pentest"
+            >
+              Пентест / Ethical Hacking
+            </button>
+            <button
+              class="plan-sidebar-link"
+              type="button"
+              data-plan-target="plan-infosec"
+            >
+              Информационная безопасность
+            </button>
+          </aside>
+          <div class="plan-content">
+            <article
+              class="plan-panel"
+              id="plan-admin"
+              aria-label="План занятий: Системное администрирование"
+            >
+              <h2>План занятий: Системное администрирование (Linux и Windows)</h2>
+              <p class="plan-note">
+                Фрагмент плана. Полная версия обсуждается и подстраивается под
+                ваши цели и текущий уровень.
+              </p>
+              <div class="plan-table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Модуль</th>
+                      <th>Уровень</th>
+                      <th>Цель</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Введение в Linux</td>
+                      <td>Б</td>
+                      <td>Понять базовые принципы работы Linux</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Командная строка и файлы</td>
+                      <td>Б</td>
+                      <td>Освоить базовые команды и навигацию</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Пользователи, группы и права</td>
+                      <td>Б–С</td>
+                      <td>Научиться управлять безопасностью на уровне ОС</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Процессы и службы (systemd)</td>
+                      <td>С</td>
+                      <td>Освоить управление системой и сервисами</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Пакетные менеджеры и обновления</td>
+                      <td>Б–С</td>
+                      <td>Научиться устанавливать и обновлять ПО</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Файловые системы и диски</td>
+                      <td>С</td>
+                      <td>Управлять хранилищем и резервным копированием</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Сетевое администрирование в Linux</td>
+                      <td>С–П</td>
+                      <td>Изучить работу сетевых служб и инструментов</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>Службы и серверы Linux</td>
+                      <td>С–П</td>
+                      <td>Освоить работу основных серверных систем</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Администрирование Windows и AD</td>
+                      <td>Б–С</td>
+                      <td>Понять управление доменом и политиками</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Автоматизация: скрипты и планировщики</td>
+                      <td>С–П</td>
+                      <td>Научиться автоматизировать рутинные задачи</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article
+              class="plan-panel"
+              id="plan-networks"
+              aria-label="План занятий: Компьютерные сети"
+            >
+              <h2>План занятий: Компьютерные сети</h2>
+              <p class="plan-note">
+                Фокус на практике в Cisco Packet Tracer и понимании, как работают
+                реальные сети.
+              </p>
+              <div class="plan-table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Модуль</th>
+                      <th>Уровень</th>
+                      <th>Цель</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Введение в сети и основе IP</td>
+                      <td>Б</td>
+                      <td>Понять базовые концепции сетей</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Сетевое оборудование и топологии</td>
+                      <td>Б</td>
+                      <td>Разобраться в роли коммутаторов и роутеров</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>IP-адресация и подсети</td>
+                      <td>Б–С</td>
+                      <td>Научиться проектировать подсети</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Коммутация: VLAN и STP</td>
+                      <td>С</td>
+                      <td>Освоить работу L2-уровня</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Маршрутизация: статическая и динамическая</td>
+                      <td>С–П</td>
+                      <td>Научиться маршрутизации между сетями</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>DHCP, DNS и сервисы сети</td>
+                      <td>С</td>
+                      <td>Понимать распределение адресов и имён</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Wi‑Fi и беспроводные сети</td>
+                      <td>С</td>
+                      <td>Изучить принципы Wi‑Fi и безопасность</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>Диагностика и анализ трафика</td>
+                      <td>Б–С</td>
+                      <td>Научиться находить проблемы в сети</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Проектирование корпоративной сети</td>
+                      <td>С–П</td>
+                      <td>Собрать полноценную схему компании</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Безопасность сетей</td>
+                      <td>С–П</td>
+                      <td>Освоить основы защиты сетевой инфраструктуры</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article
+              class="plan-panel"
+              id="plan-devops"
+              aria-label="План занятий: DevOps"
+            >
+              <h2>План занятий: DevOps</h2>
+              <p class="plan-note">
+                Полноценный путь от основ Linux и Git до CI/CD, Kubernetes,
+                Terraform и мониторинга.
+              </p>
+              <div class="plan-table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Модуль</th>
+                      <th>Уровень</th>
+                      <th>Цель</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Основы DevOps и жизненный цикл</td>
+                      <td>Б</td>
+                      <td>Понять философию DevOps и CI/CD</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Linux для DevOps</td>
+                      <td>Б–С</td>
+                      <td>Освоить основу работы инженера</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Git и GitFlow</td>
+                      <td>Б–С</td>
+                      <td>Научиться командной разработке</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Docker и контейнеризация</td>
+                      <td>Б–С</td>
+                      <td>Контейнеризировать сервисы</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Docker Compose и multi‑container</td>
+                      <td>С</td>
+                      <td>Запускать сложные стенды</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Kubernetes (базовый)</td>
+                      <td>С</td>
+                      <td>Понять архитектуру и объекты</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Kubernetes (продвинутый)</td>
+                      <td>П</td>
+                      <td>Освоить Helm, HPA, RBAC</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>CI/CD pipelines</td>
+                      <td>С–П</td>
+                      <td>Построить конвейеры интеграции и доставки</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Terraform и IaC</td>
+                      <td>С–П</td>
+                      <td>Управлять инфраструктурой через код</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Monitoring &amp; Logging</td>
+                      <td>С–П</td>
+                      <td>Построить наблюдаемость (Prometheus/Grafana)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article
+              class="plan-panel"
+              id="plan-devsecops"
+              aria-label="План занятий: DevSecOps"
+            >
+              <h2>План занятий: DevOps с фокусом на безопасность</h2>
+              <p class="plan-note">
+                От классических DevOps-инструментов к безопасности пайплайна и
+                инфраструктуры (DevSecOps).
+              </p>
+              <div class="plan-table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Модуль</th>
+                      <th>Уровень</th>
+                      <th>Цель</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Обзор DevSecOps и угроз</td>
+                      <td>С</td>
+                      <td>Понять, где безопасность в DevOps</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Секреты и управление доступом</td>
+                      <td>С–П</td>
+                      <td>Безопасно хранить ключи и токены</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Security‑сканирование в CI/CD</td>
+                      <td>С–П</td>
+                      <td>Встраивать SAST/DAST и SBOM</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Безопасность Docker и Kubernetes</td>
+                      <td>С–П</td>
+                      <td>Защищать контейнеры и кластер</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Cloud security basics</td>
+                      <td>С–П</td>
+                      <td>Работать с IAM и сетями в облаке</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Инциденты и реагирование</td>
+                      <td>С–П</td>
+                      <td>Понимать, как искать и закрывать инциденты</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article
+              class="plan-panel"
+              id="plan-pentest"
+              aria-label="План занятий: Пентест / Ethical Hacking"
+            >
+              <h2>План занятий: Пентест / Ethical Hacking</h2>
+              <p class="plan-note">
+                Используются только легальные стенды (DVWA, Metasploitable, Juice
+                Shop, VulnHub, TryHackMe, Hack The Box Academy). Практика строго
+                в безопасной среде.
+              </p>
+              <div class="plan-table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Модуль</th>
+                      <th>Уровень</th>
+                      <th>Цель</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Введение в пентест и правовые аспекты</td>
+                      <td>Б</td>
+                      <td>Понять цели, методики и юридические рамки</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Linux и сетевые основы для пентестера</td>
+                      <td>Б–С</td>
+                      <td>Освоить базу администрирования и сетей</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Виртуализация и безопасная лаборатория</td>
+                      <td>Б</td>
+                      <td>Научиться безопасно проводить эксперименты</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Информационный сбор (Recon)</td>
+                      <td>С</td>
+                      <td>Понять поиск информации и разведку</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Сканирование и анализ уязвимостей</td>
+                      <td>С</td>
+                      <td>Освоить методы выявления уязвимостей</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Metasploit и безопасная эксплуатация</td>
+                      <td>С</td>
+                      <td>Познакомиться с Metasploit в лаборатории</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>OWASP Top 10 и веб‑безопасность</td>
+                      <td>С–П</td>
+                      <td>Понимать основные веб‑уязвимости</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>Тестирование API</td>
+                      <td>С</td>
+                      <td>Оценивать безопасность REST/API</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Атаки на аутентификацию (этичный уровень)</td>
+                      <td>С</td>
+                      <td>Изучить типовые ошибки в авторизации</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Финальный мини‑проект и отчёт</td>
+                      <td>П</td>
+                      <td>Применить всё на комплексной лаборатории</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article
+              class="plan-panel"
+              id="plan-infosec"
+              aria-label="План занятий: Информационная безопасность"
+            >
+              <h2>План занятий: Информационная безопасность</h2>
+              <p class="plan-note">
+                От фундаментальных основ систем и сетей до практической работы с
+                SIEM, криптографией, DevSecOps и расследованием инцидентов.
+              </p>
+              <div class="plan-table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Модуль</th>
+                      <th>Уровень</th>
+                      <th>Цель</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Основы IT и архитектура компьютера</td>
+                      <td>Б</td>
+                      <td>Понять, как устроены системы в целом</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Linux для ИБ</td>
+                      <td>Б–С</td>
+                      <td>Освоить Linux как базу для безопасности</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Windows и Active Directory</td>
+                      <td>Б–С</td>
+                      <td>Изучить управление корпоративной инфраструктурой</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Компьютерные сети (Network+)</td>
+                      <td>Б–С</td>
+                      <td>Получить фундаментальные сетевые компетенции</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Сетевое администрирование и безопасность</td>
+                      <td>С–П</td>
+                      <td>Научиться защищать сетевую инфраструктуру</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Скриптинг и автоматизация для ИБ</td>
+                      <td>Б–П</td>
+                      <td>Писать утилиты и анализаторы</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Криптография и PKI</td>
+                      <td>С</td>
+                      <td>Освоить ключевые криптосистемы</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>НПА и стандарты ИБ</td>
+                      <td>Б–С</td>
+                      <td>Разобраться в правовой среде ИБ</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>Анализ уязвимостей и тестирование</td>
+                      <td>С–П</td>
+                      <td>Понимать методики поиска уязвимостей</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Мониторинг, SIEM и реагирование</td>
+                      <td>С–П</td>
+                      <td>Получить навыки работы SOC‑подхода</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-left">
@@ -377,4 +1030,3 @@
     <script src="script.js"></script>
   </body>
   </html>
-
