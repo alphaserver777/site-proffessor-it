@@ -704,10 +704,11 @@ h1 {
 }
 
 .who-mindmap-title {
-  margin-top: 8px;
-  margin-bottom: 6px;
-  font-size: 17px;
-  letter-spacing: -0.02em;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 
 .who-mindmap-core p {
@@ -847,6 +848,102 @@ h1 {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 4px;
+}
+
+.format-roadmap {
+  position: relative;
+  margin-top: 18px;
+  padding: 16px 16px 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.18),
+      rgba(15, 23, 42, 0.98)
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(45, 212, 191, 0.16),
+      rgba(15, 23, 42, 0.98)
+    );
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
+  overflow: hidden;
+}
+
+.format-roadmap-line {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  bottom: 18px;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    rgba(56, 189, 248, 0.9),
+    rgba(59, 130, 246, 0.12),
+    rgba(45, 212, 191, 0.85)
+  );
+  opacity: 0.7;
+}
+
+.format-steps {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 32px;
+}
+
+.format-step {
+  position: relative;
+  padding: 4px 0 10px;
+}
+
+.format-step-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.format-step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--accent);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.format-step-label {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.format-step::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 10px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, var(--accent), #020617);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.9);
+}
+
+.format-step p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
 .cta-inner {
