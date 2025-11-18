@@ -670,6 +670,24 @@ h1 {
   align-items: center;
 }
 
+.cta-shell {
+  border-radius: 26px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 18px 20px 18px;
+  background: radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.22),
+      rgba(15, 23, 42, 0.98)
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(45, 212, 191, 0.16),
+      rgba(15, 23, 42, 0.98)
+    );
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(26px);
+}
+
 .cta-content h2 {
   margin: 0 0 10px;
   font-size: 24px;
@@ -685,6 +703,34 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  color: var(--accent);
+  background: radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.16),
+      rgba(15, 23, 42, 0.96)
+    ),
+    rgba(15, 23, 42, 0.96);
+}
+
+.cta-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 .cta-meta {
@@ -1036,6 +1082,10 @@ h1 {
 
   .section {
     padding: 30px 0;
+  }
+
+  .cta-shell {
+    padding-inline: 14px;
   }
 
   .site-footer {
