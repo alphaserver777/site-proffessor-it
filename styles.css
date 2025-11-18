@@ -641,6 +641,124 @@ h1 {
   margin-top: 8px;
 }
 
+.roadmap-section {
+  position: relative;
+  padding-top: 10px;
+}
+
+.roadmap-shell {
+  border-radius: 26px;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  background: radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.24),
+      rgba(15, 23, 42, 0.98)
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(45, 212, 191, 0.16),
+      rgba(15, 23, 42, 0.98)
+    );
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.95);
+  padding: 20px 22px 20px;
+  backdrop-filter: blur(26px);
+  overflow: hidden;
+}
+
+.roadmap-head h2 {
+  margin: 14px 0 10px;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+}
+
+.roadmap-lead {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 720px;
+}
+
+.roadmap-body {
+  margin-top: 18px;
+}
+
+.roadmap-steps {
+  position: relative;
+}
+
+.roadmap-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.roadmap-step-marker {
+  position: relative;
+}
+
+.roadmap-step-marker::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: -16px;
+  bottom: -16px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(148, 163, 184, 0),
+    rgba(148, 163, 184, 0.7),
+    rgba(148, 163, 184, 0)
+  );
+}
+
+.roadmap-step:first-child .roadmap-step-marker::before {
+  top: 12px;
+}
+
+.roadmap-step:last-child .roadmap-step-marker::before {
+  bottom: 8px;
+}
+
+.roadmap-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  background: radial-gradient(circle at 30% 20%, #38bdf8, #0f172a);
+  color: #e0f2fe;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.7),
+    0 0 20px rgba(56, 189, 248, 0.8);
+}
+
+.roadmap-step-content h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.roadmap-step-content p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.roadmap-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.roadmap-tags .chip {
+  font-size: 11px;
+}
+
 .who-mindmap {
   margin-top: 18px;
   padding: 16px 16px 14px;
