@@ -131,9 +131,58 @@ function initPlanModal() {
   });
 }
 
+function initCtaPopup() {
+  const popup = document.getElementById('cta-popup');
+  if (!popup) return;
+
+  let dismissed = false;
+  try {
+    dismissed = localStorage.getItem('cta_popup_dismissed') === '1';
+  } catch {
+    dismissed = false;
+  }
+
+  if (dismissed) return;
+
+  const backdrop = popup.querySelector('.cta-popup-backdrop');
+  const closeBtn = popup.querySelector('.cta-popup-close');
+
+  function closePopup() {
+    popup.classList.remove('is-open');
+    popup.setAttribute('aria-hidden', 'true');
+    try {
+      localStorage.setItem('cta_popup_dismissed', '1');
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function openPopup() {
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closePopup);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closePopup);
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && popup.classList.contains('is-open')) {
+      closePopup();
+    }
+  });
+
+  setTimeout(openPopup, 15000);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initThemeToggle();
   initYear();
   initPlanModal();
+  initCtaPopup();
 });
