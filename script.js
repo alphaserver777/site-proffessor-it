@@ -146,6 +146,7 @@ function initCtaPopup() {
 
   const backdrop = popup.querySelector('.cta-popup-backdrop');
   const closeBtn = popup.querySelector('.cta-popup-close');
+  let hasOpened = false;
 
   function closePopup() {
     popup.classList.remove('is-open');
@@ -158,6 +159,8 @@ function initCtaPopup() {
   }
 
   function openPopup() {
+    if (hasOpened) return;
+    hasOpened = true;
     popup.classList.add('is-open');
     popup.setAttribute('aria-hidden', 'false');
   }
@@ -176,7 +179,19 @@ function initCtaPopup() {
     }
   });
 
-  setTimeout(openPopup, 15000);
+  setTimeout(openPopup, 20000);
+
+  function handleScroll() {
+    if (hasOpened) return;
+    const docHeight = document.documentElement.scrollHeight;
+    const viewportBottom = window.scrollY + window.innerHeight;
+    if (viewportBottom >= docHeight / 2) {
+      openPopup();
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
