@@ -103,15 +103,15 @@ function initPlanModal() {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
 
-    if (target.hasAttribute('data-plan-close') || target === modal) {
+    if (target === modal || target.closest('[data-plan-close]')) {
       closePlanModal();
     }
   });
 
-  const closeBtn = modal.querySelector('.plan-close');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closePlanModal);
-  }
+  const closeButtons = modal.querySelectorAll('[data-plan-close]');
+  closeButtons.forEach((btn) => {
+    btn.addEventListener('click', closePlanModal);
+  });
 
   const sidebarLinks = modal.querySelectorAll('.plan-sidebar-link');
   sidebarLinks.forEach((link) => {
@@ -131,6 +131,54 @@ function initPlanModal() {
   });
 }
 
+function initMobileMenu() {
+  const nav = document.querySelector('.nav');
+  const toggle = document.querySelector('.menu-toggle');
+  if (!nav || !toggle) return;
+
+  function closeMenu() {
+    nav.classList.remove('is-open');
+    toggle.classList.remove('is-active');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMenu() {
+    nav.classList.add('is-open');
+    toggle.classList.add('is-active');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.contains('is-open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  nav.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+
+    if (target.closest('.nav-link')) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 720) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+      closeMenu();
+    }
+  });
+}
+
 function initCtaPopup() {
   const popup = document.getElementById('cta-popup');
   if (!popup) return;
@@ -145,7 +193,7 @@ function initCtaPopup() {
   if (dismissed) return;
 
   const backdrop = popup.querySelector('.cta-popup-backdrop');
-  const closeBtn = popup.querySelector('.cta-popup-close');
+  const closeBtn = popup.querySelector('[data-cta-close]');
   let hasOpened = false;
 
   function closePopup() {
@@ -173,6 +221,15 @@ function initCtaPopup() {
     closeBtn.addEventListener('click', closePopup);
   }
 
+  popup.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+
+    if (target.closest('[data-cta-close]')) {
+      closePopup();
+    }
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && popup.classList.contains('is-open')) {
       closePopup();
@@ -199,5 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initYear();
   initPlanModal();
+  initMobileMenu();
   initCtaPopup();
 });

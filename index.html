@@ -27,6 +27,18 @@
           <span class="logo-mark">&gt;_</span>
           <span class="logo-text">proffessor_it</span>
         </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-label="Открыть меню"
+        >
+          <span class="menu-toggle-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
         <nav class="nav">
           <a href="#about" class="nav-link">Обо мне</a>
           <a href="#who-for" class="nav-link">Кому полезно</a>
@@ -1142,7 +1154,17 @@
     <div class="plan-modal" id="plan-modal" aria-hidden="true">
       <div class="plan-backdrop" data-plan-close></div>
       <div class="plan-dialog" role="dialog" aria-modal="true">
-        <button class="plan-close" type="button" data-plan-close>×</button>
+        <div
+          class="window-controls plan-controls"
+          aria-label="Управление окном плана"
+          data-plan-close
+        >
+          <button
+            class="window-control window-control-close plan-close"
+            type="button"
+            aria-label="Закрыть план занятий"
+          ></button>
+        </div>
         <div class="plan-dialog-inner">
           <aside class="plan-sidebar">
             <div class="plan-sidebar-title">Учебные планы</div>
@@ -2034,13 +2056,17 @@
     <div class="cta-popup" id="cta-popup" aria-hidden="true">
       <div class="cta-popup-backdrop"></div>
       <div class="cta-popup-dialog" role="dialog" aria-modal="true">
-        <button
-          class="cta-popup-close"
-          type="button"
-          aria-label="Закрыть всплывающее окно"
+        <div
+          class="window-controls cta-controls"
+          aria-label="Управление всплывающим окном"
+          data-cta-close
         >
-          ×
-        </button>
+          <button
+            class="window-control window-control-close cta-popup-close"
+            type="button"
+            aria-label="Закрыть всплывающее окно"
+          ></button>
+        </div>
         <div class="cta-popup-content">
           <div class="cta-popup-label">Готовы перейти к делу?</div>
           <h2>Запишитесь на первую встречу</h2>
