@@ -187,8 +187,7 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  padding: 10px 14px;
   border-radius: 12px;
   border: 1px solid rgba(148, 163, 184, 0.35);
   background: rgba(15, 23, 42, 0.7);
@@ -199,42 +198,14 @@ body {
     border-color var(--transition-fast),
     transform var(--transition-fast),
     background var(--transition-fast);
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .menu-toggle:hover {
   border-color: rgba(56, 189, 248, 0.6);
   transform: translateY(-1px);
   background: rgba(15, 23, 42, 0.85);
-}
-
-.menu-toggle-lines {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.menu-toggle-lines span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--text);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition:
-    transform var(--transition-fast),
-    opacity var(--transition-fast);
-}
-
-.menu-toggle.is-active .menu-toggle-lines span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.menu-toggle.is-active .menu-toggle-lines span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.is-active .menu-toggle-lines span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
 }
 
 .theme-toggle {
