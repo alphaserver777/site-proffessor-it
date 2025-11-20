@@ -27,7 +27,14 @@
         <nav class="nav">
           <a href="index.html#top" class="nav-link">Обучение</a>
           <a href="business.html" class="nav-link">Для бизнеса</a>
-          <a href="resume.html" class="nav-link nav-link-primary">Резюме</a>
+          <a href="resume.html" class="nav-link">Резюме</a>
+          <a
+            href="https://t.me/proffessor_it"
+            target="_blank"
+            class="nav-link nav-link-primary"
+          >
+            Связаться
+          </a>
         </nav>
         <button class="theme-toggle" aria-label="Переключить тему">
           <span class="theme-icon theme-icon-light">☀</span>
@@ -41,7 +48,7 @@
         <div class="container hero-inner">
           <div class="hero-content">
             <div class="eyebrow">Резюме</div>
-            <h1>DevOps Engineer / Platform Engineer</h1>
+            <h1>DevOps Engineer / SRE Engineer</h1>
             <p class="hero-lead">
               Опыт построения отказоустойчивых платформ на Kubernetes, автоматизации
               инфраструктуры через IaC и разработки CI/CD‑конвейеров для
@@ -55,7 +62,6 @@
               >
                 Связаться в Telegram
               </a>
-              <a href="index.html#cta" class="btn btn-ghost">Перейти к обучению</a>
             </div>
           </div>
           <div class="hero-terminal-card">
@@ -70,7 +76,7 @@
                 <span class="prompt">➜</span>
                 <span class="command">role</span>
               </div>
-              <div class="terminal-output">DevOps / Platform Engineer</div>
+              <div class="terminal-output">DevOps / SRE Engineer</div>
 
               <div class="terminal-line">
                 <span class="prompt">➜</span>
@@ -91,62 +97,99 @@
         </div>
       </section>
 
-      <section class="section section-alt">
-        <div class="container section-grid">
-          <div class="section-label">Опыт</div>
-          <div class="section-content">
-            <h2>Опыт работы</h2>
-            <div class="cards-grid">
-              <article class="card">
-                <div class="card-tag">🛡 Kaspersky</div>
-                <h3>DevOps Engineer — KUMA (Next‑Gen SIEM)</h3>
-                <p>
-                  Март 2022 – Февраль 2025 (почти 3 года). Фактически выполнял роль
-                  DevOps/Platform Engineer в команде разработки высоконагруженной
-                  распределённой SIEM‑платформы KUMA.
-                </p>
-                <ul class="bullet-list">
-                  <li>
-                    Проектирование инфраструктуры с нуля: Kubernetes‑кластеры (on‑prem
-                    + cloud‑ready), Helm‑чарты, GitOps‑подход.
-                  </li>
-                  <li>
-                    Multi‑region / multi‑AZ отказоустойчивость, HPA/VPA и Cluster
-                    Autoscaler.
-                  </li>
-                  <li>
-                    CI/CD на GitLab: build → test → security scan (Trivy, Checkov) →
-                    docker build → push → helm upgrade.
-                  </li>
-                  <li>
-                    Canary и blue‑green‑деплойменты через ArgoCD + Flagger.
-                  </li>
-                  <li>
-                    IaC: Helm + Kustomize + Terraform для тестовых облачных стендов.
-                  </li>
-                  <li>
-                    Автоматизированная установка продукта «одной командой» вместо
-                    3‑дневной ручной настройки 150+ компонентов.
-                  </li>
-                </ul>
-              </article>
-              <article class="card">
-                <div class="card-tag">🚚 Movehome</div>
-                <h3>Информационная безопасность / DevOps</h3>
-                <p>
-                  Июль 2021 – Март 2022. Направление: таможенная логистика и
-                  обеспечение информационной безопасности.
-                </p>
-                <ul class="bullet-list">
-                  <li>Развёртывание и настройка SIEM‑систем (KUMA, Splunk, QRadar).</li>
-                  <li>Автоматизация инфраструктуры (Bash, Python, Docker).</li>
-                  <li>VPN, IDS/IPS, DLP, PKI, управление доступами.</li>
-                  <li>
-                    Перенос сервисов в контейнеры и запуск первых Kubernetes‑кластеров
-                    компании.
-                  </li>
-                </ul>
-              </article>
+      <section class="section roadmap-section">
+        <div class="container">
+          <div class="roadmap-shell">
+            <div class="roadmap-head">
+              <div class="eyebrow">Опыт работы</div>
+              <h2>Мой путь в IT</h2>
+              <p class="roadmap-lead">
+                От первых задач по инфраструктуре и безопасности до построения
+                продовых Kubernetes‑платформ и CI/CD для высоконагруженных SIEM‑систем.
+              </p>
+            </div>
+            <div class="roadmap-body">
+              <div class="roadmap-steps">
+                <article class="roadmap-step">
+                  <div class="roadmap-step-marker">
+                    <span class="roadmap-step-number">01</span>
+                  </div>
+                  <div class="roadmap-step-content">
+                    <h3>
+                      <a
+                        href="https://movehome.eu"
+                        target="_blank"
+                        class="terminal-link"
+                        >Movehome</a
+                      >
+                      — ИБ / DevOps
+                    </h3>
+                    <p>
+                      Июль 2021 – Март 2022. Занимался безопасностью и инфраструктурой
+                      в компании из сферы таможенной логистики.
+                    </p>
+                    <div class="roadmap-tags">
+                      <span class="chip">SIEM: KUMA, Splunk, QRadar</span>
+                      <span class="chip">Docker, первые кластеры Kubernetes</span>
+                      <span class="chip">VPN, IDS/IPS, DLP, PKI</span>
+                    </div>
+                    <ul class="bullet-list">
+                      <li>Развёртывал и настраивал SIEM‑системы под бизнес‑требования.</li>
+                      <li>Автоматизировал инфраструктуру с помощью Bash, Python, Docker.</li>
+                      <li>Настраивал VPN, IDS/IPS, DLP и PKI‑инфраструктуру.</li>
+                      <li>
+                        Запустил первые Kubernetes‑кластеры, перенёс часть сервисов из
+                        монолитной схемы в контейнеры.
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="roadmap-step">
+                  <div class="roadmap-step-marker">
+                    <span class="roadmap-step-number">02</span>
+                  </div>
+                  <div class="roadmap-step-content">
+                    <h3>
+                      <a
+                        href="https://www.kaspersky.ru/enterprise-security/unified-monitoring-and-analysis-platform"
+                        target="_blank"
+                        class="terminal-link"
+                        >Kaspersky (KUMA)</a
+                      >
+                      — DevOps Engineer
+                    </h3>
+                    <p>
+                      Март 2022 – Февраль 2025. DevOps/SRE Engineer в команде
+                      разработки SIEM‑системы нового поколения KUMA.
+                    </p>
+                    <div class="roadmap-tags">
+                      <span class="chip">Kubernetes, Helm, GitOps</span>
+                      <span class="chip">GitLab CI/CD, ArgoCD</span>
+                      <span class="chip">Kafka, ClickHouse, Elasticsearch</span>
+                    </div>
+                    <ul class="bullet-list">
+                      <li>
+                        Спроектировал и поддерживал Kubernetes‑кластеры (on‑prem +
+                        cloud‑ready), Helm‑чарты и GitOps‑процессы.
+                      </li>
+                      <li>
+                        Реализовал отказоустойчивость (multi‑AZ/region), HPA/VPA и
+                        Cluster Autoscaler.
+                      </li>
+                      <li>
+                        Построил многостадийные GitLab CI/CD‑пайплайны с security‑сканами
+                        и автоматическим деплоем (canary, blue‑green через ArgoCD +
+                        Flagger).
+                      </li>
+                      <li>
+                        Описал инфраструктуру через Terraform/Helm/Kustomize и
+                        автоматизировал установку продукта «одной командой».
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
         </div>
@@ -178,7 +221,7 @@
                 </div>
                 <p>
                   Многостадийные пайплайны в GitLab CI/CD, ArgoCD, canary/blue‑green
-                  деплой, встроенные security‑чеки и политика quality gates.
+                  деплой, встроенные проверки безопасности и политика quality gates.
                 </p>
               </div>
               <div class="who-task">
@@ -326,6 +369,19 @@
                 Автоматическое реагирование на инциденты — предотвращено
                 <strong>50+ инцидентов</strong> в месяц.
               </li>
+              <li>
+                Финалист хакатона
+                <a
+                  href="https://apihack.vtb.ru/"
+                  target="_blank"
+                  class="terminal-link"
+                  >VTB API Hack</a
+                >.
+              </li>
+              <li>
+                Автор диссертационного исследования на тему «Мониторинг ИБ в
+                распределённых системах».
+              </li>
             </ul>
           </div>
         </div>
@@ -333,12 +389,10 @@
 
       <section class="section section-alt">
         <div class="container section-grid">
-          <div class="section-label">О себе</div>
           <div class="section-content">
-            <h2>Что я ищу</h2>
+            <h2>Рассматриваю предложения</h2>
             <p>
-              Рассматриваю предложения DevOps Engineer / Senior DevOps / Platform
-              Engineer в продуктовой или сервисной компании, где можно:
+              Вакансий DevOps Engineer / SRE Engineer / Midle+, Senior в продуктовой или сервисной компании, где можно:
             </p>
             <ul class="bullet-list">
               <li>
@@ -362,6 +416,32 @@
           </div>
         </div>
       </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <div class="cta-shell">
+            <div class="cta-inner">
+              <div class="cta-content">
+                <div class="cta-label">Готовы обсудить сотрудничество?</div>
+                <h2>Связаться по поводу вакансии или проекта</h2>
+                <p>
+                  Напишите в Telegram — обсудим ваши задачи, стек, формат
+                  взаимодействия и ожидания по роли DevOps / SRE Engineer.
+                </p>
+                <div class="cta-actions">
+                  <a
+                    href="https://t.me/proffessor_it"
+                    target="_blank"
+                    class="btn btn-primary btn-large"
+                  >
+                    Связаться в Telegram
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -378,7 +458,7 @@
         </div>
         <div class="footer-columns">
           <div class="footer-column">
-            <div class="footer-column-title">Навигация</div>
+            <div class="footer-column-title">Страницы</div>
             <div class="footer-links-column">
               <a href="index.html#top" class="footer-link">Обучение</a>
               <a href="business.html" class="footer-link">Услуги для бизнеса</a>
@@ -412,11 +492,12 @@
             </div>
           </div>
           <div class="footer-column">
-            <div class="footer-column-title">Формат</div>
+            <div class="footer-column-title">Форматы работы</div>
             <ul class="footer-list">
-              <li>Удалённый/гибридный формат</li>
-              <li>Полная занятость</li>
-              <li>Участие в дежурствах по необходимости</li>
+              <li>Разовые задачи и точечный аудит</li>
+              <li>Проектная работа под результат</li>
+              <li>Абонентское сопровождение</li>
+              <li>Обучение и развитие команды</li>
             </ul>
           </div>
         </div>
@@ -436,4 +517,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-

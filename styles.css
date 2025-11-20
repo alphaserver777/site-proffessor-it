@@ -1413,6 +1413,9 @@ h1 {
 .footer-text {
   margin: 8px 0 0;
   color: var(--text-muted);
+}
+
+.footer-text-nowrap {
   white-space: nowrap;
 }
 
