@@ -28,6 +28,7 @@
           <span class="logo-text">proffessor_it</span>
         </div>
         <nav class="nav">
+          <a href="resume.html" class="nav-link">Резюме</a>
           <a href="#about" class="nav-link">Обо мне</a>
           <a href="#who-for" class="nav-link">Кому полезно</a>
           <a href="#tracks" class="nav-link">Планы обучения</a>
@@ -100,7 +101,7 @@
                 <span class="prompt">➜</span>
                 <span class="command">whoami</span>
               </div>
-              <div class="terminal-output">Вадим / Proffessor IT</div>
+              <div class="terminal-output">Моисеенко Вадим / Proffessor IT</div>
 
               <div class="terminal-line">
                 <span class="prompt">➜</span>
@@ -182,7 +183,7 @@
                   работу с облаками и построение DevOps‑процессов.
                 </p>
                 <p>
-                  На практике я внедрял CI/CD‑конвейеры, автоматизировал
+                  На практике я внедрял Docker, CI/CD‑конвейеры, Kubernetes, автоматизировал
                   инфраструктуру с помощью Ansible, Terraform и Kubernetes, строил
                   мониторинг и логирование в распределённых системах. Параллельно
                   углублялся в безопасность: от hardening Linux до работы с
@@ -873,6 +874,78 @@
               <details class="faq-item">
                 <summary class="faq-header">
                   <span class="faq-question"
+                    >Какая операционная система подойдёт для занятий?</span
+                  >
+                  <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-panel">
+                  <p>
+                    Оптимальный вариант — компьютер с Windows&nbsp;10 или более новой
+                    версией (64‑разрядной). На такой системе комфортно работать с
+                    виртуализацией и учебными стендами.
+                  </p>
+                  <p>
+                    Современные версии Windows поддерживают встроенные инструменты
+                    (например, Hyper‑V) и хорошо совместимы с популярными внешними
+                    гипервизорами (VMware Workstation / Fusion, VirtualBox). Это
+                    позволяет без лишних сложностей разворачивать виртуальные машины
+                    для практических заданий.
+                  </p>
+                </div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-header">
+                  <span class="faq-question"
+                    >Какие характеристики должны быть у компьютера?</span
+                  >
+                  <span class="faq-icon">+</span>
+                </summary>
+                <div class="faq-panel">
+                  <p>
+                    Для комфортных занятий, в том числе с виртуальными машинами и
+                    практикой по DevOps, желательно ориентироваться на такие
+                    параметры:
+                  </p>
+                  <p>
+                    <strong>Оперативная память (ОЗУ).</strong> Минимум&nbsp;6&nbsp;ГБ — для
+                    запуска одной виртуальной машины и базовой работы. Комфортнее
+                    иметь от 8&nbsp;ГБ и больше, особенно если планируется несколько
+                    виртуалок и ресурсоёмкие инструменты.
+                  </p>
+                  <p>
+                    <strong>Процессор.</strong> Нужна поддержка аппаратной виртуализации:
+                    для Intel — технология Intel VT‑x, для AMD — AMD‑V. Желательно
+                    4 и более физических/логических ядер, чтобы система вела себя
+                    плавно под нагрузкой.
+                  </p>
+                  <p>
+                    <strong>Свободное место на диске.</strong> Минимум&nbsp;20&nbsp;ГБ — под
+                    образы ОС и инструменты. Лучше иметь от 40&nbsp;ГБ и выше, если вы
+                    планируете несколько стендов или хранение проектов.
+                  </p>
+                  <p>
+                    <strong>Операционная система.</strong> Windows&nbsp;10 или новее
+                    (64‑разрядная). Для использования Hyper‑V нужна редакция Pro,
+                    Enterprise или Education — в домашней версии эта функция может
+                    отсутствовать.
+                  </p>
+                  <p>
+                    <strong>Дополнительно.</strong> SSD‑накопитель сильно ускорит работу
+                    виртуальных машин, а стабильный интернет нужен для загрузки
+                    образов, обновлений и инструментов.
+                  </p>
+                  <p>
+                    <strong>Поддержка виртуализации.</strong> Важно, чтобы в BIOS/UEFI
+                    была включена виртуализация (опции вроде Virtualization
+                    Technology, VT‑x, AMD‑V или SVM Mode). Для процессоров Intel можно
+                    проверить поддержку через Intel Processor Identification Utility,
+                    для AMD — с помощью AMD‑V Detection Utility.
+                  </p>
+                </div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-header">
+                  <span class="faq-question"
                     >Как проверить оборудование и скорость интернета?</span
                   >
                   <span class="faq-icon">+</span>
@@ -918,7 +991,7 @@
               <details class="faq-item">
                 <summary class="faq-header">
                   <span class="faq-question"
-                    >Зачем нужны AnyDesk и гипервизор?</span
+                    >Какие программы нужно установить для занятий?</span
                   >
                   <span class="faq-icon">+</span>
                 </summary>
@@ -937,7 +1010,37 @@
                       target="_blank"
                       class="terminal-link"
                       >VMware Workstation/Fusion</a
+                    >
+                    или
+                    <a
+                      href="https://www.virtualbox.org/"
+                      target="_blank"
+                      class="terminal-link"
+                      >VirtualBox</a
                     >, чтобы развернуть учебную инфраструктуру.
+                  </p>
+                  <p>
+                    Для лабораторных по системному администрированию, безопасности и
+                    пентесту также понадобятся образы операционных систем:
+                    <a
+                      href="https://ubuntu.com/download/server"
+                      target="_blank"
+                      class="terminal-link"
+                      >Ubuntu Server / Desktop</a
+                    >,
+                    <a
+                      href="https://www.kali.org"
+                      target="_blank"
+                      class="terminal-link"
+                      >Kali Linux</a
+                    >
+                    и образы Windows (7/10/Server 2016), например с ресурса
+                    <a
+                      href="https://windowsobraz.com/"
+                      target="_blank"
+                      class="terminal-link"
+                      >windowsobraz.com</a
+                    >.
                   </p>
                   <p>
                     В AnyDesk достаточно скачать клиент, запустить, отправить мне свой
@@ -1939,7 +2042,7 @@
         </button>
         <div class="cta-popup-content">
           <div class="cta-popup-label">Готовы перейти к делу?</div>
-          <h2>Записаться на первую встречу</h2>
+          <h2>Запишитесь на первую встречу</h2>
           <p>
             Через короткий бриф и стартовую встречу определим ваш уровень,
             цели и соберём маршрут обучения под вас.

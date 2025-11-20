@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Резюме — DevOps Engineer | Proffessor IT</title>
+    <meta
+      name="description"
+      content="Резюме DevOps Engineer: опыт в Kaspersky (KUMA), Movehome, Kubernetes, CI/CD, IaC, observability, безопасность и высоконагруженные системы."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-mark">&gt;_</span>
+          <span class="logo-text">proffessor_it</span>
+        </div>
+        <nav class="nav">
+          <a href="index.html#top" class="nav-link">Обучение</a>
+          <a href="business.html" class="nav-link">Для бизнеса</a>
+          <a href="resume.html" class="nav-link nav-link-primary">Резюме</a>
+        </nav>
+        <button class="theme-toggle" aria-label="Переключить тему">
+          <span class="theme-icon theme-icon-light">☀</span>
+          <span class="theme-icon theme-icon-dark">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <div class="eyebrow">Резюме</div>
+            <h1>DevOps Engineer / Platform Engineer</h1>
+            <p class="hero-lead">
+              Опыт построения отказоустойчивых платформ на Kubernetes, автоматизации
+              инфраструктуры через IaC и разработки CI/CD‑конвейеров для
+              высоконагруженных систем безопасности.
+            </p>
+            <div class="hero-actions">
+              <a
+                href="https://t.me/proffessor_it"
+                target="_blank"
+                class="btn btn-primary"
+              >
+                Связаться в Telegram
+              </a>
+              <a href="index.html#cta" class="btn btn-ghost">Перейти к обучению</a>
+            </div>
+          </div>
+          <div class="hero-terminal-card">
+            <div class="terminal-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="terminal-title">resume@devops: ~</span>
+            </div>
+            <div class="terminal-body" aria-label="Терминал с информацией">
+              <div class="terminal-line">
+                <span class="prompt">➜</span>
+                <span class="command">role</span>
+              </div>
+              <div class="terminal-output">DevOps / Platform Engineer</div>
+
+              <div class="terminal-line">
+                <span class="prompt">➜</span>
+                <span class="command">stack</span>
+              </div>
+              <div class="terminal-output">
+                Kubernetes, CI/CD, Terraform, Kafka, ClickHouse, Elasticsearch,
+                Prometheus, DevSecOps
+              </div>
+
+              <div class="terminal-line">
+                <span class="prompt">➜</span>
+                <span class="command">location</span>
+              </div>
+              <div class="terminal-output">Remote / Hybrid</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container section-grid">
+          <div class="section-label">Опыт</div>
+          <div class="section-content">
+            <h2>Опыт работы</h2>
+            <div class="cards-grid">
+              <article class="card">
+                <div class="card-tag">🛡 Kaspersky</div>
+                <h3>DevOps Engineer — KUMA (Next‑Gen SIEM)</h3>
+                <p>
+                  Март 2022 – Февраль 2025 (почти 3 года). Фактически выполнял роль
+                  DevOps/Platform Engineer в команде разработки высоконагруженной
+                  распределённой SIEM‑платформы KUMA.
+                </p>
+                <ul class="bullet-list">
+                  <li>
+                    Проектирование инфраструктуры с нуля: Kubernetes‑кластеры (on‑prem
+                    + cloud‑ready), Helm‑чарты, GitOps‑подход.
+                  </li>
+                  <li>
+                    Multi‑region / multi‑AZ отказоустойчивость, HPA/VPA и Cluster
+                    Autoscaler.
+                  </li>
+                  <li>
+                    CI/CD на GitLab: build → test → security scan (Trivy, Checkov) →
+                    docker build → push → helm upgrade.
+                  </li>
+                  <li>
+                    Canary и blue‑green‑деплойменты через ArgoCD + Flagger.
+                  </li>
+                  <li>
+                    IaC: Helm + Kustomize + Terraform для тестовых облачных стендов.
+                  </li>
+                  <li>
+                    Автоматизированная установка продукта «одной командой» вместо
+                    3‑дневной ручной настройки 150+ компонентов.
+                  </li>
+                </ul>
+              </article>
+              <article class="card">
+                <div class="card-tag">🚚 Movehome</div>
+                <h3>Информационная безопасность / DevOps</h3>
+                <p>
+                  Июль 2021 – Март 2022. Направление: таможенная логистика и
+                  обеспечение информационной безопасности.
+                </p>
+                <ul class="bullet-list">
+                  <li>Развёртывание и настройка SIEM‑систем (KUMA, Splunk, QRadar).</li>
+                  <li>Автоматизация инфраструктуры (Bash, Python, Docker).</li>
+                  <li>VPN, IDS/IPS, DLP, PKI, управление доступами.</li>
+                  <li>
+                    Перенос сервисов в контейнеры и запуск первых Kubernetes‑кластеров
+                    компании.
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-grid">
+          <div class="section-label">Зоны ответственности</div>
+          <div class="section-content">
+            <h2>Ключевые зоны ответственности и достижения</h2>
+            <div class="who-tasks-grid">
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">☸️</span>
+                  <span class="who-task-title">
+                    Kubernetes и микросервисная инфраструктура
+                  </span>
+                </div>
+                <p>
+                  Проектирование и поддержка Kubernetes‑кластеров, микросервисной
+                  архитектуры, отказоустойчивости (multi‑AZ/region), автоматического
+                  масштабирования и self‑healing.
+                </p>
+              </div>
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">🛠</span>
+                  <span class="who-task-title">CI/CD и GitOps</span>
+                </div>
+                <p>
+                  Многостадийные пайплайны в GitLab CI/CD, ArgoCD, canary/blue‑green
+                  деплой, встроенные security‑чеки и политика quality gates.
+                </p>
+              </div>
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">📜</span>
+                  <span class="who-task-title">IaC и автоматизация</span>
+                </div>
+                <p>
+                  Terraform, Helm, Kustomize: описание инфраструктуры и сервисов как
+                  кода, полное автоматизированное развёртывание стендов.
+                </p>
+              </div>
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">📡</span>
+                  <span class="who-task-title">
+                    Потоковые данные и очереди
+                  </span>
+                </div>
+                <p>
+                  Кластеры Apache Kafka (KRaft) и RabbitMQ: партиционирование,
+                  отказоустойчивость, рост throughput с ~40 до ~300 тыс. событий/с.
+                </p>
+              </div>
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">📊</span>
+                  <span class="who-task-title">Observability и мониторинг</span>
+                </div>
+                <p>
+                  Prometheus, Thanos/VictoriaMetrics, Grafana, Loki, Alertmanager,
+                  интеграции с Zabbix, Nagios, Splunk; SLA/SLO‑мониторинг.
+                </p>
+              </div>
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">🧱</span>
+                  <span class="who-task-title">Хранение и базы данных</span>
+                </div>
+                <p>
+                  ClickHouse, Elasticsearch, PostgreSQL (Patroni + pgBouncer), Redis
+                  Cluster. Hot‑warm‑cold архитектура, ILM‑политики, шардинг и
+                  репликация.
+                </p>
+              </div>
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">🔐</span>
+                  <span class="who-task-title">Security и DevSecOps</span>
+                </div>
+                <p>
+                  Network policies, OPA/Gatekeeper, Falco, Vault, Sealed Secrets,
+                  TLS‑шифрование, участие в аудите 152‑ФЗ, ISO 27001, PCI DSS.
+                </p>
+              </div>
+              <div class="who-task">
+                <div class="who-task-head">
+                  <span class="who-task-icon">⚙️</span>
+                  <span class="who-task-title">
+                    Performance и надёжность
+                  </span>
+                </div>
+                <p>
+                  Redis‑кэш, оптимизация PostgreSQL, chaos‑тесты (Chaos Mesh,
+                  Litmus), повышение uptime до 99.99&nbsp;% для продовых кластеров.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container section-grid">
+          <div class="section-label">Стек</div>
+          <div class="section-content">
+            <h2>Технологический стек (ежедневная практика)</h2>
+            <div class="who-mindmap">
+              <div class="who-mindmap-nodes">
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">IaC &amp; GitOps</div>
+                  <p>Terraform, Helm 3, Kustomize, ArgoCD.</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">CI/CD &amp; Security</div>
+                  <p>GitLab CI/CD, Trivy, Hadolint, Checkov.</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">Kubernetes &amp; контейнеры</div>
+                  <p>Docker, Kubernetes 1.27+, kubeadm, Rancher (test).</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">Облака</div>
+                  <p>Yandex Cloud, AWS (тестовые стенды, миграции).</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">Streaming &amp; очереди</div>
+                  <p>Apache Kafka (KRaft), RabbitMQ.</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">Хранение данных</div>
+                  <p>ClickHouse, Elasticsearch 8.x, PostgreSQL, Redis Cluster.</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">Мониторинг</div>
+                  <p>Prometheus, Grafana, Thanos, Loki, Alertmanager, Jaeger.</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">Безопасность</div>
+                  <p>Falco, OPA/Gatekeeper, Vault, Trivy, DevSecOps‑подход.</p>
+                </div>
+                <div class="who-mindmap-node">
+                  <div class="who-mindmap-node-title">Разработка</div>
+                  <p>Golang (утилиты, операторы), Python, Bash, gRPC, REST, Nginx.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container section-grid">
+          <div class="section-label">Цифры</div>
+          <div class="section-content">
+            <h2>Ключевые достижения</h2>
+            <ul class="bullet-list">
+              <li>
+                Ускорение обработки событий безопасности на <strong>26&nbsp;%</strong> за счёт
+                оптимизации Kafka и асинхронной архитектуры.
+              </li>
+              <li>
+                Снижение среднего времени ответа API на <strong>32&nbsp;%</strong> (Redis +
+                оптимизация PostgreSQL).
+              </li>
+              <li>
+                Полностью автоматизированное развёртывание продукта: 1 команда вместо
+                3‑дневной ручной установки.
+              </li>
+              <li>
+                Достижение <strong>99.99&nbsp;%</strong> uptime Kubernetes‑кластера за
+                последний год.
+              </li>
+              <li>
+                Автоматическое реагирование на инциденты — предотвращено
+                <strong>50+ инцидентов</strong> в месяц.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container section-grid">
+          <div class="section-label">О себе</div>
+          <div class="section-content">
+            <h2>Что я ищу</h2>
+            <p>
+              Рассматриваю предложения DevOps Engineer / Senior DevOps / Platform
+              Engineer в продуктовой или сервисной компании, где можно:
+            </p>
+            <ul class="bullet-list">
+              <li>
+                Строить и поддерживать высоконагруженные отказоустойчивые платформы на
+                Kubernetes.
+              </li>
+              <li>
+                Работать с облаками (AWS, GCP, Azure, Yandex Cloud).
+              </li>
+              <li>
+                Автоматизировать инфраструктуру (IaC, GitOps, CI/CD).
+              </li>
+              <li>
+                Участвовать в архитектуре и performance‑тюнинге.
+              </li>
+              <li>
+                Использовать Golang для внутренних инструментов, операторов и
+                автоматизации.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <div class="logo footer-logo">
+            <span class="logo-mark">&gt;_</span>
+            <span class="logo-text">proffessor_it</span>
+          </div>
+          <p class="footer-text">
+            DevOps, платформенная инженерия и инфраструктура — с акцентом на
+            надёжность и автоматизацию.
+          </p>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-column">
+            <div class="footer-column-title">Навигация</div>
+            <div class="footer-links-column">
+              <a href="index.html#top" class="footer-link">Обучение</a>
+              <a href="business.html" class="footer-link">Услуги для бизнеса</a>
+              <a href="resume.html" class="footer-link">Резюме</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <div class="footer-column-title">Контакты</div>
+            <div class="footer-links-column">
+              <a
+                href="https://t.me/proffessor_it"
+                target="_blank"
+                class="footer-link"
+              >
+                Telegram: @proffessor_it
+              </a>
+              <a
+                href="https://t.me/it_pride_rus"
+                target="_blank"
+                class="footer-link"
+              >
+                Телеграм‑канал: IT Pride
+              </a>
+              <a
+                href="https://github.com/alphaserver777"
+                target="_blank"
+                class="footer-link"
+              >
+                GitHub: alphaserver777
+              </a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <div class="footer-column-title">Формат</div>
+            <ul class="footer-list">
+              <li>Удалённый/гибридный формат</li>
+              <li>Полная занятость</li>
+              <li>Участие в дежурствах по необходимости</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <div class="footer-copy">
+            © <span id="year"></span> Proffessor IT — DevOps Engineer
+          </div>
+          <div class="footer-meta">
+            Kubernetes • CI/CD • IaC • Observability • Security.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+

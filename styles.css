@@ -1328,7 +1328,7 @@ h1 {
 }
 
 .faq-panel p {
-  margin: 0;
+  margin: 0 0 8px;
   font-size: 14px;
   color: var(--text-muted);
 }
