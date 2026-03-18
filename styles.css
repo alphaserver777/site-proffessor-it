@@ -435,10 +435,11 @@ h1 {
   width: 9px;
   height: 9px;
   border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 10px rgba(0, 0, 0, 0.18);
 }
 
 .dot.red {
-  background: var(--accent);
+  background: var(--accent-alt);
 }
 
 .dot.yellow {
@@ -446,7 +447,7 @@ h1 {
 }
 
 .dot.green {
-  background: var(--accent);
+  background: var(--success);
 }
 
 .terminal-title {
