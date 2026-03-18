@@ -10,6 +10,12 @@
   --accent-surface: rgba(99, 102, 241, 0.12);
   --accent-border: rgba(99, 102, 241, 0.34);
   --accent-stroke: rgba(99, 102, 241, 0.18);
+  --glow-accent: 0 0 0 1px rgba(99, 102, 241, 0.58), 0 0 0 3px rgba(99, 102, 241, 0.14),
+    0 0 34px rgba(99, 102, 241, 0.28);
+  --glow-success: 0 0 0 1px rgba(34, 197, 94, 0.52), 0 0 0 3px rgba(34, 197, 94, 0.12),
+    0 0 34px rgba(34, 197, 94, 0.24);
+  --glow-danger: 0 0 0 1px rgba(239, 68, 68, 0.52), 0 0 0 3px rgba(239, 68, 68, 0.12),
+    0 0 34px rgba(239, 68, 68, 0.24);
   --text: #efefef;
   --text-muted: #b0b0b0;
   --border-subtle: rgba(143, 143, 143, 0.3);
@@ -118,7 +124,9 @@ body {
   color: var(--text-muted);
   text-decoration: none;
   padding: 5px 0;
-  transition: color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    text-shadow var(--transition-fast);
 }
 
 .nav-link::after {
@@ -135,6 +143,7 @@ body {
 
 .nav-link:hover {
   color: var(--text);
+  text-shadow: 0 0 18px rgba(99, 102, 241, 0.28);
 }
 
 .nav-link:hover::after {
@@ -157,8 +166,7 @@ body {
 
 .nav-link-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.7),
-    0 14px 35px rgba(99, 102, 241, 0.4);
+  box-shadow: var(--glow-accent), 0 16px 38px rgba(99, 102, 241, 0.34);
 }
 
 .menu-toggle {
@@ -219,6 +227,14 @@ body {
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.eyebrow:hover {
+  box-shadow: var(--glow-accent);
 }
 
 .eyebrow::before {
@@ -281,8 +297,7 @@ h1 {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.8),
-    0 24px 45px rgba(99, 102, 241, 0.36);
+  box-shadow: var(--glow-accent), 0 24px 45px rgba(99, 102, 241, 0.3);
 }
 
 .btn-ghost {
@@ -290,11 +305,18 @@ h1 {
   color: var(--text);
   border-color: rgba(143, 143, 143, 0.45);
   backdrop-filter: blur(14px);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
 }
 
 .btn-ghost:hover {
   background: rgba(38, 38, 38, 0.95);
   border-color: rgba(143, 143, 143, 0.8);
+  transform: translateY(-1px);
+  box-shadow: var(--glow-accent);
 }
 
 .btn-outline {
@@ -325,8 +347,7 @@ h1 {
 
 .track-plan-btn:hover {
   border-color: rgba(99, 102, 241, 0.8);
-  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.65),
-    0 16px 32px rgba(0, 0, 0, 0.42);
+  box-shadow: var(--glow-accent), 0 16px 32px rgba(0, 0, 0, 0.38);
   background: #333333;
 }
 
@@ -353,6 +374,17 @@ h1 {
   background: #262626;
   box-shadow: inset 0 1px 0 rgba(99, 102, 241, 0.12);
   font-size: 12px;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.meta-item:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(99, 102, 241, 0.16),
+    var(--glow-accent);
 }
 
 .meta-label {
@@ -375,6 +407,19 @@ h1 {
   overflow: hidden;
   backdrop-filter: blur(var(--blur-strong));
   transform: translateY(4px);
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.hero-terminal-card:hover {
+  transform: translateY(0);
+  border-color: rgba(99, 102, 241, 0.28);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.16),
+    var(--glow-accent),
+    0 24px 60px rgba(0, 0, 0, 0.42);
 }
 
 .terminal-header {
@@ -512,6 +557,38 @@ h1 {
   background: var(--accent-surface);
   color: var(--accent);
   font-size: 11px;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--glow-accent);
+}
+
+.tone-accent {
+  --tone-color: var(--accent);
+  --tone-surface: rgba(99, 102, 241, 0.12);
+  --tone-border: rgba(99, 102, 241, 0.34);
+  --tone-stroke: rgba(99, 102, 241, 0.12);
+}
+
+.tone-success {
+  --tone-color: var(--success);
+  --tone-surface: rgba(34, 197, 94, 0.12);
+  --tone-border: rgba(34, 197, 94, 0.3);
+  --tone-stroke: rgba(34, 197, 94, 0.12);
+}
+
+.tone-danger {
+  --tone-color: var(--accent-alt);
+  --tone-surface: rgba(239, 68, 68, 0.12);
+  --tone-border: rgba(239, 68, 68, 0.3);
+  --tone-stroke: rgba(239, 68, 68, 0.12);
 }
 
 .cards-grid {
@@ -534,6 +611,44 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.card.tone-accent,
+.card.tone-success,
+.card.tone-danger {
+  border-color: var(--tone-border);
+  box-shadow:
+    inset 0 2px 0 var(--tone-stroke),
+    0 18px 40px rgba(0, 0, 0, 0.34);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.34);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.16),
+    var(--glow-accent),
+    0 22px 48px rgba(0, 0, 0, 0.4);
+}
+
+.card.tone-success:hover {
+  border-color: var(--tone-border);
+  box-shadow:
+    inset 0 2px 0 var(--tone-stroke),
+    var(--glow-success),
+    0 22px 48px rgba(0, 0, 0, 0.4);
+}
+
+.card.tone-danger:hover {
+  border-color: var(--tone-border);
+  box-shadow:
+    inset 0 2px 0 var(--tone-stroke),
+    var(--glow-danger),
+    0 22px 48px rgba(0, 0, 0, 0.4);
 }
 
 .card::after {
@@ -553,6 +668,14 @@ h1 {
   font-size: 11px;
   color: var(--accent);
   margin-bottom: 8px;
+}
+
+.card.tone-accent .card-tag,
+.card.tone-success .card-tag,
+.card.tone-danger .card-tag {
+  background: var(--tone-surface);
+  border-color: var(--tone-border);
+  color: var(--tone-color);
 }
 
 .card h3 {
@@ -619,6 +742,29 @@ h1 {
   padding: 20px 22px 20px;
   backdrop-filter: blur(26px);
   overflow: hidden;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.roadmap-shell:hover {
+  border-color: rgba(99, 102, 241, 0.24);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.16),
+    var(--glow-accent),
+    0 30px 90px rgba(0, 0, 0, 0.5);
+}
+
+.roadmap-step:hover .roadmap-step-number {
+  box-shadow: var(--glow-accent);
+}
+
+.roadmap-step.tone-success:hover .roadmap-step-number {
+  box-shadow: var(--glow-success);
+}
+
+.roadmap-step.tone-danger:hover .roadmap-step-number {
+  box-shadow: var(--glow-danger);
 }
 
 .roadmap-head h2 {
@@ -690,6 +836,36 @@ h1 {
   background: var(--accent);
   color: #efefef;
   box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.45);
+}
+
+.roadmap-step.tone-success .roadmap-step-marker::before {
+  background: rgba(34, 197, 94, 0.22);
+}
+
+.roadmap-step.tone-danger .roadmap-step-marker::before {
+  background: rgba(239, 68, 68, 0.22);
+}
+
+.roadmap-step.tone-success .roadmap-step-number {
+  background: var(--success);
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.45);
+}
+
+.roadmap-step.tone-danger .roadmap-step-number {
+  background: var(--accent-alt);
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.45);
+}
+
+.roadmap-step.tone-success .roadmap-tags .chip {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--success);
+}
+
+.roadmap-step.tone-danger .roadmap-tags .chip {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--accent-alt);
 }
 
 .roadmap-step-content h3 {
@@ -778,6 +954,39 @@ h1 {
   border-radius: 14px;
   border: 1px solid rgba(99, 102, 241, 0.16);
   background: #262626;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.who-persona.tone-accent,
+.who-persona.tone-success,
+.who-persona.tone-danger {
+  border-color: var(--tone-border);
+  box-shadow: inset 0 2px 0 var(--tone-stroke);
+}
+
+.who-persona:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.12),
+    var(--glow-accent);
+}
+
+.who-persona.tone-success:hover {
+  border-color: var(--tone-border);
+  box-shadow:
+    inset 0 2px 0 var(--tone-stroke),
+    var(--glow-success);
+}
+
+.who-persona.tone-danger:hover {
+  border-color: var(--tone-border);
+  box-shadow:
+    inset 0 2px 0 var(--tone-stroke),
+    var(--glow-danger);
 }
 
 .who-persona-label {
@@ -811,6 +1020,14 @@ h1 {
   box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.35);
 }
 
+.who-persona.tone-accent .who-persona-icon,
+.who-persona.tone-success .who-persona-icon,
+.who-persona.tone-danger .who-persona-icon {
+  background: var(--tone-surface);
+  color: var(--tone-color);
+  box-shadow: 0 0 0 1px var(--tone-border);
+}
+
 .who-tasks {
   margin-top: 16px;
 }
@@ -831,6 +1048,39 @@ h1 {
   border-radius: 14px;
   border: 1px solid rgba(99, 102, 241, 0.16);
   background: #262626;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.who-task.tone-accent,
+.who-task.tone-success,
+.who-task.tone-danger {
+  border-color: var(--tone-border);
+  box-shadow: inset 0 2px 0 var(--tone-stroke);
+}
+
+.who-task:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.12),
+    var(--glow-accent);
+}
+
+.who-task.tone-success:hover {
+  border-color: var(--tone-border);
+  box-shadow:
+    inset 0 2px 0 var(--tone-stroke),
+    var(--glow-success);
+}
+
+.who-task.tone-danger:hover {
+  border-color: var(--tone-border);
+  box-shadow:
+    inset 0 2px 0 var(--tone-stroke),
+    var(--glow-danger);
 }
 
 .who-task-title {
@@ -862,6 +1112,14 @@ h1 {
   background: rgba(99, 102, 241, 0.14);
   color: var(--accent);
   box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.35);
+}
+
+.who-task.tone-accent .who-task-icon,
+.who-task.tone-success .who-task-icon,
+.who-task.tone-danger .who-task-icon {
+  background: var(--tone-surface);
+  color: var(--tone-color);
+  box-shadow: 0 0 0 1px var(--tone-border);
 }
 
 .who-mindmap-nodes {
@@ -933,6 +1191,17 @@ h1 {
     inset 0 2px 0 rgba(99, 102, 241, 0.12),
     0 24px 80px rgba(0, 0, 0, 0.34);
   overflow: hidden;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.format-roadmap:hover {
+  border-color: rgba(99, 102, 241, 0.24);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.16),
+    var(--glow-accent),
+    0 24px 80px rgba(0, 0, 0, 0.34);
 }
 
 .format-roadmap-line {
@@ -974,6 +1243,19 @@ h1 {
   background: var(--accent-surface);
   color: var(--accent);
   border: 1px solid var(--accent-border);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.format-step:hover .format-step-index {
+  transform: translateY(-1px);
+  box-shadow: var(--glow-accent);
+}
+
+.format-step:hover::before {
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18), 0 0 20px rgba(99, 102, 241, 0.28);
 }
 
 .format-step-label {
@@ -1026,6 +1308,19 @@ h1 {
     inset 0 2px 0 rgba(99, 102, 241, 0.12),
     0 28px 80px rgba(0, 0, 0, 0.36);
   backdrop-filter: blur(26px);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.cta-shell:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.24);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.16),
+    var(--glow-accent),
+    0 28px 80px rgba(0, 0, 0, 0.36);
 }
 
 .cta-content h2 {
@@ -1104,6 +1399,19 @@ h1 {
     inset 0 2px 0 rgba(99, 102, 241, 0.12),
     0 18px 40px rgba(0, 0, 0, 0.32);
   cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.28);
+  box-shadow:
+    inset 0 2px 0 rgba(99, 102, 241, 0.16),
+    var(--glow-accent),
+    0 18px 40px rgba(0, 0, 0, 0.32);
 }
 
 .faq-header {
