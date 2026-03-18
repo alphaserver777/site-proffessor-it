@@ -58,6 +58,13 @@ body {
   font-size: 15px;
 }
 
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .noise {
   display: none;
 }
@@ -152,7 +159,16 @@ body {
   text-shadow: 0 0 18px rgba(99, 102, 241, 0.28);
 }
 
+.nav-link.is-active {
+  color: var(--text);
+  text-shadow: 0 0 18px rgba(99, 102, 241, 0.2);
+}
+
 .nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.is-active::after {
   width: 100%;
 }
 
@@ -255,16 +271,19 @@ body {
 
 h1 {
   margin: 18px 0 14px;
-  font-size: 36px;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
 }
 
 .hero-lead {
   margin: 0 0 24px;
-  color: var(--text-muted);
-  font-size: 16px;
-  line-height: 1.7;
+  color: #c3c3cb;
+  font-size: 17px;
+  line-height: 1.78;
+  max-width: 42rem;
+  text-wrap: pretty;
 }
 
 .hero-actions {
@@ -668,6 +687,8 @@ h1 {
 
 .card-tag {
   display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 3px 10px;
   border-radius: 999px;
   background: var(--accent-surface);
@@ -1022,7 +1043,6 @@ h1 {
   width: 22px;
   height: 22px;
   border-radius: 999px;
-  font-size: 13px;
   background: rgba(99, 102, 241, 0.14);
   color: var(--accent);
   box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.35);
@@ -1120,7 +1140,6 @@ h1 {
   width: 22px;
   height: 22px;
   border-radius: 999px;
-  font-size: 13px;
   background: rgba(99, 102, 241, 0.14);
   color: var(--accent);
   box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.35);
@@ -1439,8 +1458,8 @@ h1 {
 }
 
 .faq-question {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   letter-spacing: -0.01em;
   margin-right: 8px;
 }
@@ -1478,7 +1497,30 @@ h1 {
 .faq-panel p {
   margin: 0 0 8px;
   font-size: 14px;
-  color: var(--text-muted);
+  color: #c0c0c8;
+  line-height: 1.72;
+}
+
+.ui-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+
+.who-persona-icon .ui-icon,
+.who-task-icon .ui-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.card-tag .ui-icon {
+  width: 15px;
+  height: 15px;
 }
 
 .cta-meta {

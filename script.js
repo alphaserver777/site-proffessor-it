@@ -275,10 +275,94 @@ function initRevealMotion() {
   });
 }
 
+function initScrollSpy() {
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  if (!navLinks.length) return;
+
+  const currentUrl = new URL(window.location.href);
+  const hashLinks = navLinks.filter((link) => {
+    const href = link.getAttribute('href');
+    if (!href || !href.includes('#')) return false;
+
+    const url = new URL(href, window.location.href);
+    return (
+      url.pathname === currentUrl.pathname &&
+      url.origin === currentUrl.origin &&
+      url.hash
+    );
+  });
+
+  function setActive(link) {
+    navLinks.forEach((item) => item.classList.remove('is-active'));
+    if (link) {
+      link.classList.add('is-active');
+    }
+  }
+
+  const currentPageLink = navLinks.find((link) => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#')) return false;
+    const url = new URL(href, window.location.href);
+    return (
+      url.origin === currentUrl.origin &&
+      url.pathname === currentUrl.pathname &&
+      !url.hash
+    );
+  });
+
+  if (!hashLinks.length) {
+    if (currentPageLink) setActive(currentPageLink);
+    return;
+  }
+
+  const sections = hashLinks
+    .map((link) => {
+      const href = link.getAttribute('href');
+      if (!href) return null;
+      const id = href.slice(href.indexOf('#') + 1);
+      const section = document.getElementById(id);
+      if (!section) return null;
+      return { link, section };
+    })
+    .filter(Boolean);
+
+  if (!sections.length) {
+    if (currentPageLink) setActive(currentPageLink);
+    return;
+  }
+
+  let activeLink = sections[0].link;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (!visible.length) return;
+
+      const match = sections.find(({ section }) => section === visible[0].target);
+      if (!match) return;
+
+      activeLink = match.link;
+      setActive(activeLink);
+    },
+    {
+      threshold: [0.2, 0.35, 0.5, 0.65],
+      rootMargin: '-18% 0px -55% 0px',
+    }
+  );
+
+  sections.forEach(({ section }) => observer.observe(section));
+
+  setActive(activeLink);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initYear();
   initPlanModal();
   initMobileMenu();
   initCtaPopup();
   initRevealMotion();
+  initScrollSpy();
 });
