@@ -207,9 +207,78 @@ function initCtaPopup() {
   window.addEventListener('scroll', handleScroll);
 }
 
+function initRevealMotion() {
+  const selectors = [
+    '.hero-content > *',
+    '.hero-terminal-card',
+    '.section .section-label',
+    '.section .section-content > *',
+    '.cards-grid .card',
+    '.who-mindmap',
+    '.who-persona',
+    '.who-task',
+    '.who-mindmap-node',
+    '.format-roadmap',
+    '.roadmap-shell',
+    '.faq-item',
+    '.cta-shell',
+    '.cta-meta',
+    '.cta-meta-wide',
+  ];
+
+  const elements = Array.from(
+    new Set(document.querySelectorAll(selectors.join(', ')))
+  ).filter((element) => !element.closest('.cta-popup'));
+
+  if (!elements.length) return;
+
+  const groupOffsets = new Map();
+
+  elements.forEach((element) => {
+    element.classList.add('reveal-enter');
+
+    const group =
+      element.closest('.hero, .section, .roadmap-section, .site-footer') ||
+      element.parentElement ||
+      document.body;
+    const offset = groupOffsets.get(group) || 0;
+    element.style.setProperty('--reveal-delay', `${Math.min(offset * 70, 280)}ms`);
+    groupOffsets.set(group, offset + 1);
+  });
+
+  if (
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    !('IntersectionObserver' in window)
+  ) {
+    elements.forEach((element) => {
+      element.classList.add('is-visible');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: '0px 0px -10% 0px',
+    }
+  );
+
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initYear();
   initPlanModal();
   initMobileMenu();
   initCtaPopup();
+  initRevealMotion();
 });

@@ -10,6 +10,12 @@
   --accent-surface: rgba(99, 102, 241, 0.12);
   --accent-border: rgba(99, 102, 241, 0.34);
   --accent-stroke: rgba(99, 102, 241, 0.18);
+  --panel-bg: #262626;
+  --panel-bg-alt: #2b2b2b;
+  --panel-border: rgba(99, 102, 241, 0.16);
+  --panel-stroke: rgba(99, 102, 241, 0.12);
+  --panel-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+  --panel-shadow-strong: 0 24px 70px rgba(0, 0, 0, 0.42);
   --glow-accent: 0 0 0 1px rgba(99, 102, 241, 0.58), 0 0 0 3px rgba(99, 102, 241, 0.14),
     0 0 34px rgba(99, 102, 241, 0.28);
   --glow-success: 0 0 0 1px rgba(34, 197, 94, 0.52), 0 0 0 3px rgba(34, 197, 94, 0.12),
@@ -525,10 +531,10 @@ h1 {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, 'Liberation Mono', 'Courier New', monospace;
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 6px;
+  color: #9a9aa3;
+  margin-bottom: 8px;
 }
 
 .section-content h2 {
@@ -599,14 +605,16 @@ h1 {
   margin: 16px 0 10px;
 }
 
+.hero-terminal-card,
 .card {
-  padding: 14px 14px 14px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), var(--panel-shadow);
+}
+
+.card {
+  padding: 16px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    0 18px 40px rgba(0, 0, 0, 0.34);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -622,9 +630,7 @@ h1 {
 .card.tone-success,
 .card.tone-danger {
   border-color: var(--tone-border);
-  box-shadow:
-    inset 0 2px 0 var(--tone-stroke),
-    0 18px 40px rgba(0, 0, 0, 0.34);
+  box-shadow: inset 0 2px 0 var(--tone-stroke), var(--panel-shadow);
 }
 
 .card:hover {
@@ -682,6 +688,7 @@ h1 {
 .card h3 {
   margin: 0 0 6px;
   font-size: 16px;
+  letter-spacing: -0.02em;
 }
 
 .card p {
@@ -735,11 +742,9 @@ h1 {
 
 .roadmap-shell {
   border-radius: 26px;
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    0 30px 90px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), 0 30px 90px rgba(0, 0, 0, 0.5);
   padding: 20px 22px 20px;
   backdrop-filter: blur(26px);
   overflow: hidden;
@@ -894,11 +899,9 @@ h1 {
   margin-top: 18px;
   padding: 16px 16px 14px;
   border-radius: 22px;
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    0 24px 80px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), 0 24px 80px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -951,10 +954,10 @@ h1 {
 }
 
 .who-persona {
-  padding: 9px 11px;
-  border-radius: 14px;
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg-alt);
   transition:
     transform var(--transition-fast),
     border-color var(--transition-fast),
@@ -965,34 +968,38 @@ h1 {
 .who-persona.tone-success,
 .who-persona.tone-danger {
   border-color: var(--tone-border);
-  box-shadow: inset 0 2px 0 var(--tone-stroke);
+  box-shadow: inset 0 2px 0 var(--tone-stroke), 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
 .who-persona:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: rgba(99, 102, 241, 0.3);
   box-shadow:
     inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    var(--glow-accent);
+    var(--glow-accent),
+    0 16px 32px rgba(0, 0, 0, 0.28);
 }
 
 .who-persona.tone-success:hover {
   border-color: var(--tone-border);
   box-shadow:
     inset 0 2px 0 var(--tone-stroke),
-    var(--glow-success);
+    var(--glow-success),
+    0 16px 32px rgba(0, 0, 0, 0.28);
 }
 
 .who-persona.tone-danger:hover {
   border-color: var(--tone-border);
   box-shadow:
     inset 0 2px 0 var(--tone-stroke),
-    var(--glow-danger);
+    var(--glow-danger),
+    0 16px 32px rgba(0, 0, 0, 0.28);
 }
 
 .who-persona-label {
   font-size: 13px;
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .who-persona p {
@@ -1045,10 +1052,10 @@ h1 {
 }
 
 .who-task {
-  padding: 9px 10px;
-  border-radius: 14px;
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg-alt);
   transition:
     transform var(--transition-fast),
     border-color var(--transition-fast),
@@ -1059,34 +1066,38 @@ h1 {
 .who-task.tone-success,
 .who-task.tone-danger {
   border-color: var(--tone-border);
-  box-shadow: inset 0 2px 0 var(--tone-stroke);
+  box-shadow: inset 0 2px 0 var(--tone-stroke), 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
 .who-task:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: rgba(99, 102, 241, 0.3);
   box-shadow:
     inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    var(--glow-accent);
+    var(--glow-accent),
+    0 16px 32px rgba(0, 0, 0, 0.28);
 }
 
 .who-task.tone-success:hover {
   border-color: var(--tone-border);
   box-shadow:
     inset 0 2px 0 var(--tone-stroke),
-    var(--glow-success);
+    var(--glow-success),
+    0 16px 32px rgba(0, 0, 0, 0.28);
 }
 
 .who-task.tone-danger:hover {
   border-color: var(--tone-border);
   box-shadow:
     inset 0 2px 0 var(--tone-stroke),
-    var(--glow-danger);
+    var(--glow-danger),
+    0 16px 32px rgba(0, 0, 0, 0.28);
 }
 
 .who-task-title {
   font-size: 13px;
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .who-task p {
@@ -1134,11 +1145,11 @@ h1 {
 
 .who-mindmap-node {
   position: relative;
-  padding: 9px 10px;
-  border-radius: 14px;
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.85);
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg-alt);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), 0 14px 30px rgba(15, 23, 42, 0.62);
 }
 
 .who-mindmap-node-title {
@@ -1186,11 +1197,9 @@ h1 {
   margin-top: 18px;
   padding: 16px 16px 14px;
   border-radius: 22px;
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    0 24px 80px rgba(0, 0, 0, 0.34);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), 0 24px 80px rgba(0, 0, 0, 0.34);
   overflow: hidden;
   transition:
     border-color var(--transition-fast),
@@ -1302,12 +1311,10 @@ h1 {
 
 .cta-shell {
   border-radius: 26px;
-  border: 1px solid rgba(99, 102, 241, 0.16);
+  border: 1px solid var(--panel-border);
   padding: 18px 20px 18px;
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    0 28px 80px rgba(0, 0, 0, 0.36);
+  background: var(--panel-bg);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), 0 28px 80px rgba(0, 0, 0, 0.36);
   backdrop-filter: blur(26px);
   transition:
     border-color var(--transition-fast),
@@ -1392,13 +1399,11 @@ h1 {
 }
 
 .faq-item {
-  padding: 14px 14px 12px;
+  padding: 16px 16px 14px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    0 18px 40px rgba(0, 0, 0, 0.32);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), 0 18px 40px rgba(0, 0, 0, 0.32);
   cursor: pointer;
   transition:
     transform var(--transition-fast),
@@ -1436,6 +1441,7 @@ h1 {
 .faq-question {
   font-size: 14px;
   font-weight: 500;
+  letter-spacing: -0.01em;
   margin-right: 8px;
 }
 
@@ -1478,11 +1484,9 @@ h1 {
 .cta-meta {
   padding: 14px 16px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    var(--shadow-soft);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), var(--shadow-soft);
   display: grid;
   gap: 10px;
   font-size: 13px;
@@ -1503,12 +1507,37 @@ h1 {
   gap: 14px;
   padding: 14px 16px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(99, 102, 241, 0.16);
-  background: #262626;
-  box-shadow:
-    inset 0 2px 0 rgba(99, 102, 241, 0.12),
-    var(--shadow-soft);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: inset 0 2px 0 var(--panel-stroke), var(--shadow-soft);
   font-size: 13px;
+}
+
+.reveal-enter {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(8px);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.reveal-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-enter {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }
 
 .site-footer {
