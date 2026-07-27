@@ -358,6 +358,75 @@ function initScrollSpy() {
   setActive(activeLink);
 }
 
+function initHeroGlow() {
+  const hero = document.querySelector('.hero');
+  const glow = hero && hero.querySelector('.hero-glow');
+  if (!hero || !glow) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let raf = 0;
+  hero.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
+    const rect = hero.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      glow.style.transform = `translate(${x}px, ${y}px)`;
+      raf = 0;
+    });
+  });
+}
+
+function initTerminalTyping() {
+  const body = document.querySelector('.hero-terminal-card .terminal-body');
+  if (!body) return;
+
+  const commands = Array.from(body.querySelectorAll('.command'));
+  if (!commands.length) return;
+
+  const caret = document.createElement('span');
+  caret.className = 'term-caret';
+  caret.setAttribute('aria-hidden', 'true');
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    commands[commands.length - 1].after(caret);
+    return;
+  }
+
+  const steps = commands.map((el) => {
+    const text = el.textContent;
+    el.textContent = '';
+    return { el, text };
+  });
+
+  let stepIndex = 0;
+
+  function typeStep() {
+    if (stepIndex >= steps.length) {
+      steps[steps.length - 1].el.after(caret);
+      return;
+    }
+    const { el, text } = steps[stepIndex];
+    el.append(caret);
+    let charIndex = 0;
+
+    function typeChar() {
+      if (charIndex < text.length) {
+        caret.before(text.charAt(charIndex));
+        charIndex += 1;
+        setTimeout(typeChar, 55);
+      } else {
+        stepIndex += 1;
+        setTimeout(typeStep, 360);
+      }
+    }
+    typeChar();
+  }
+
+  setTimeout(typeStep, 500);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initYear();
   initPlanModal();
@@ -365,4 +434,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCtaPopup();
   initRevealMotion();
   initScrollSpy();
+  initHeroGlow();
+  initTerminalTyping();
 });
