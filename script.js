@@ -427,6 +427,16 @@ function initTerminalTyping() {
   setTimeout(typeStep, 500);
 }
 
+function initTelegramAttribution() {
+  const sourceFromUrl = new URLSearchParams(window.location.search).get('utm_source') || 'website';
+  const source = sourceFromUrl.toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 60) || 'website';
+  document.querySelectorAll('a[href^="https://t.me/proffessorit_bot"]').forEach((link) => {
+    const url = new URL(link.href);
+    url.searchParams.set('start', `src_${source}`);
+    link.href = url.toString();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initYear();
   initPlanModal();
@@ -436,4 +446,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initHeroGlow();
   initTerminalTyping();
+  initTelegramAttribution();
 });
