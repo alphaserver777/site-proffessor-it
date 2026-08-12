@@ -1,0 +1,18 @@
+{
+  "name": "professor-it-marketing",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro check && astro build && cp resume.html business.html styles.css script.js photo_2025-11-18_12-50-03.jpg dist/",
+    "preview": "astro preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@fontsource/inter": "^5.2.6",
+    "@fontsource/space-grotesk": "^5.2.6",
+    "astro": "^5.13.2",
+    "typescript": "^5.9.2"
+  }
+}

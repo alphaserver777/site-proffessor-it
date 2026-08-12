@@ -1,0 +1,12 @@
+node_modules/
+.astro/
+dist/
+design-*.png
+review-*.png
+final-*.png
+check-*.png
+section-*.png
+visual-*.png
+.env
+.env.*
+!.env.example

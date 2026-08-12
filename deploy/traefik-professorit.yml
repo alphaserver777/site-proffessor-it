@@ -1,0 +1,22 @@
+http:
+  routers:
+    professorit-site:
+      rule: "Host(`professorit.ru`)"
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      service: professorit-site
+    professorit-site-www:
+      rule: "Host(`www.professorit.ru`)"
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      service: professorit-site
+
+  services:
+    professorit-site:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8083"

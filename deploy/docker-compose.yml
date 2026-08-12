@@ -1,0 +1,16 @@
+services:
+  site:
+    image: nginx:1.27-alpine
+    container_name: professorit-site
+    restart: unless-stopped
+    ports:
+      # VM-private network only. The host forwarder reaches this port at
+      # 192.168.122.10:18080; no VM-level Nginx proxy is involved.
+      - "192.168.122.10:18080:80"
+    volumes:
+      - ..:/usr/share/nginx/html:ro
+      - ./nginx-site.conf:/etc/nginx/conf.d/default.conf:ro
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run

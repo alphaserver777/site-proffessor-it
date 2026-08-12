@@ -1,0 +1,43 @@
+---
+import {personas} from '../data/site';
+---
+<dialog class="brief-dialog" id="brief-dialog" aria-labelledby="brief-title">
+  <button class="dialog-close" type="button" data-close aria-label="Закрыть">×</button>
+  <div class="brief-progress" aria-hidden="true"><span data-progress></span></div>
+  <div class="brief-head">
+    <span class="kicker">ТЕСТ-ДРАЙВ · 1 500 ₽</span>
+    <h2 id="brief-title">Попробуйте наставничество на реальной задаче</h2>
+    <p>Два дня на мини-квест, затем личный 30-минутный разбор вашего решения.</p>
+  </div>
+  <form id="brief-form">
+    <section class="brief-step active" data-step="1">
+      <span class="step-label">01 / ВЫБОР КЛАССА</span>
+      <h3>Какое направление хотите попробовать?</h3>
+      <div class="brief-personas">
+        {personas.map((item) => <label class="brief-persona" style={`--accent:${item.color}`}><input type="radio" name="persona" value={item.id} required /><span>{item.eyebrow}</span><strong>{item.name}</strong></label>)}
+      </div>
+      <label>Текущий уровень<select name="student_level" required><option value="beginner">Начинаю с нуля</option><option value="basic">Есть отдельные знания</option><option value="junior">Junior / студент с практикой</option><option value="middle">Middle-специалист</option><option value="senior">Senior / экспертная задача</option></select></label>
+    </section>
+    <section class="brief-step" data-step="2">
+      <span class="step-label">02 / ВАША ЗАДАЧА</span>
+      <h3>Что должно измениться после обучения?</h3>
+      <label>Главная цель<textarea name="goal" minlength="5" maxlength="500" required placeholder="Например: перейти из системного администрирования в DevOps"></textarea></label>
+      <label>Что сейчас не получается<textarea name="current_problem" minlength="3" maxlength="700" required placeholder="Какие темы, задачи или ошибки останавливают вас?"></textarea></label>
+      <div class="form-grid"><label>Желаемый срок<select name="desired_timeline" required><option value="1 месяц">До месяца</option><option value="2–3 месяца">2–3 месяца</option><option value="3–6 месяцев">3–6 месяцев</option><option value="Без жёсткого срока">Без жёсткого срока</option></select></label><label>Практика в неделю<select name="weekly_hours" required><option value="2–3 часа">2–3 часа</option><option value="4–6 часов">4–6 часов</option><option value="7–10 часов">7–10 часов</option><option value="10+ часов">10+ часов</option></select></label></div>
+    </section>
+    <section class="brief-step" data-step="3">
+      <span class="step-label">03 / КОНТАКТ</span>
+      <h3>Куда отправить доступ после оплаты?</h3>
+      <label>Имя и фамилия<input name="full_name" minlength="2" maxlength="100" autocomplete="name" required placeholder="Иван Петров" /></label>
+      <div class="form-grid"><label>Телефон<input name="telephone" minlength="10" maxlength="24" inputmode="tel" autocomplete="tel" required placeholder="89881414232" /></label><label>Telegram <small>необязательно</small><input name="telegram_username" maxlength="100" placeholder="@username" /></label></div>
+      <input class="hp" tabindex="-1" autocomplete="off" name="honeypot" aria-hidden="true" />
+      <label class="consent"><input type="checkbox" name="consent" required /> <span>Я согласен на обработку персональных данных и принимаю <a href="/privacy/" target="_blank">политику конфиденциальности</a>.</span></label>
+      <div class="order-summary"><span>Тест-драйв наставничества</span><strong>1 500 ₽</strong><small>Мини-квест + проверка + личный 30-минутный разбор</small></div>
+    </section>
+    <div class="form-error" data-error role="alert"></div>
+    <div class="brief-actions"><button class="button ghost" type="button" data-prev hidden>Назад</button><button class="button primary" type="button" data-next>Продолжить</button><button class="button primary" type="submit" data-submit hidden>Оформить тест-драйв</button></div>
+  </form>
+  <section class="brief-success" data-success hidden>
+    <span class="success-mark">✓</span><h3>Заявка создана</h3><p>Я свяжусь с вами, подтвержу оплату и отправлю доступ к мини-квесту. После выполнения здесь откроется запись на личный разбор.</p><a class="button primary" href="https://t.me/proffessorit_bot" target="_blank" rel="noreferrer">Открыть Telegram-бота</a>
+  </section>
+</dialog>

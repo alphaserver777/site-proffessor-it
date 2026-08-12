@@ -1,0 +1,5 @@
+services:
+  site:
+    volumes:
+      - ../dist:/usr/share/nginx/html:ro
+      - ./nginx-site.conf:/etc/nginx/conf.d/default.conf:ro
