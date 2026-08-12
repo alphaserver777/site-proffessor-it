@@ -79,3 +79,7 @@ h1,h2,h3,h4,h5,h6,strong,b{font-family:"Space Grotesk",Inter,sans-serif}
 .persona-card.reveal-item.visible:hover,.persona-card.reveal-item.visible:focus-within{transform:translateY(-12px) scale(1.018)}
 @media(max-width:680px){.origin-node{grid-template-columns:44px 1fr;padding:20px;gap:12px}.origin-node p{grid-column:1/-1!important;margin-top:4px}.persona-top{min-height:124px}.drive-steps li>span{flex-basis:42px;width:42px;height:42px;font-size:17px}.reveal,.reveal-item{transform:translate3d(0,30px,0) scale(.985);filter:blur(4px)}}
 @media(prefers-reduced-motion:reduce){.reveal,.reveal-item{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
+
+/* Profession selector: one decisive headline and centered class emblems */
+.characters .section-head{max-width:1100px;margin-bottom:48px}.characters .section-head h2{margin:0;text-transform:uppercase;font-size:clamp(46px,5.5vw,84px);font-weight:700;line-height:.98;letter-spacing:-.035em;text-wrap:balance}.characters .origin-node{margin-top:0}.persona-top{width:100%}.class-emblem{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.persona-card:hover .class-emblem,.persona-card:focus-within .class-emblem{transform:translate(-50%,-50%) scale(1.1)}
+@media(max-width:680px){.characters .section-head{margin-bottom:34px}.characters .section-head h2{font-size:clamp(35px,10.5vw,44px);line-height:1.02}.class-emblem{top:50%}}
