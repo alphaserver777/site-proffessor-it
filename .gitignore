@@ -13,3 +13,4 @@ visual-*.png
 .env
 .env.*
 !.env.example
+verify-*.png
