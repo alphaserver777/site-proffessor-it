@@ -1,4 +1,17 @@
 const API_BASE = '/api';
+const applyRussianTypography = (root: Node = document.body) => {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes: Text[] = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode as Text;
+    const parent = node.parentElement;
+    if (parent && !['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'OPTION'].includes(parent.tagName)) nodes.push(node);
+  }
+  nodes.forEach(node => {
+    node.data = node.data.replace(/(^|[\s(«„])([АВИКОСУавикосу])\s+(?=[А-Яа-яЁё0-9])/g, '$1$2\u00a0');
+  });
+};
+applyRussianTypography();
 const dialog = document.querySelector<HTMLDialogElement>('#brief-dialog');
 const form = document.querySelector<HTMLFormElement>('#brief-form');
 const steps = [...document.querySelectorAll<HTMLElement>('.brief-step')];
@@ -42,5 +55,5 @@ form?.addEventListener('submit',async event=>{event.preventDefault();if(!validat
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>entry.isIntersecting&&entry.target.classList.add('visible')),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const roadmapDataElement=document.querySelector<HTMLScriptElement>('[data-roadmap-data]');
 const roadmapDetail=document.querySelector<HTMLElement>('[data-roadmap-detail]');
-if(roadmapDataElement&&roadmapDetail){const roadmapData=JSON.parse(roadmapDataElement.textContent||'[]') as Array<{number:string;title:string;text:string}>;document.querySelectorAll<HTMLButtonElement>('[data-roadmap-step]').forEach(button=>button.addEventListener('click',()=>{const index=Number(button.dataset.roadmapStep);const item=roadmapData[index];if(!item)return;document.querySelectorAll<HTMLButtonElement>('[data-roadmap-step]').forEach(node=>{const active=node===button;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active));});roadmapDetail.innerHTML=`<span>${item.number} / ЭТАП МАРШРУТА</span><h3>${item.title}</h3><p>${item.text}</p>`;}));}
+if(roadmapDataElement&&roadmapDetail){const roadmapData=JSON.parse(roadmapDataElement.textContent||'[]') as Array<{number:string;title:string;text:string;result:string}>;document.querySelectorAll<HTMLButtonElement>('[data-roadmap-step]').forEach(button=>button.addEventListener('click',()=>{const index=Number(button.dataset.roadmapStep);const item=roadmapData[index];if(!item)return;document.querySelectorAll<HTMLButtonElement>('[data-roadmap-step]').forEach(node=>{const active=node===button;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active));});roadmapDetail.innerHTML=`<div class="journey-detail-index"><span>${item.number}</span><small>ЭТАП МАРШРУТА</small></div><div class="journey-detail-copy"><h3>${item.title}</h3><p>${item.text}</p></div><div class="journey-detail-result"><small>РЕЗУЛЬТАТ ЭТАПА</small><strong>${item.result}</strong></div>`;applyRussianTypography(roadmapDetail);}));}
 track('landing_view');
