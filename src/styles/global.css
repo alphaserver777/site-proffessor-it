@@ -83,3 +83,7 @@ h1,h2,h3,h4,h5,h6,strong,b{font-family:"Space Grotesk",Inter,sans-serif}
 /* Profession selector: one decisive headline and centered class emblems */
 .characters .section-head{max-width:1100px;margin-bottom:48px}.characters .section-head h2{margin:0;text-transform:uppercase;font-size:clamp(46px,5.5vw,84px);font-weight:700;line-height:.98;letter-spacing:-.035em;text-wrap:balance}.characters .origin-node{margin-top:0}.persona-top{width:100%}.class-emblem{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.persona-card:hover .class-emblem,.persona-card:focus-within .class-emblem{transform:translate(-50%,-50%) scale(1.1)}
 @media(max-width:680px){.characters .section-head{margin-bottom:34px}.characters .section-head h2{font-size:clamp(35px,10.5vw,44px);line-height:1.02}.class-emblem{top:50%}}
+
+/* Mobile readability and strict viewport containment */
+html{overflow-x:clip}
+@media(max-width:680px){.engine-top,.engine-input small,.engine-core>span,.engine-core>small,.engine-output small{font-size:11px}.engine-class{font-size:11px}.engine-output>div span{font-size:10px}.engine-stages span{font-size:10px}.engine-stages b{font-size:12px}}
