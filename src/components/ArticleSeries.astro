@@ -8,13 +8,13 @@ const withQuery=(path?:string)=>path ? `${path}${query}` : undefined;
 ---
 <div class="series-progress" aria-hidden="true"><i data-series-progress></i></div>
 <header class="series-header"><div class="series-container series-header-inner"><a class="series-brand" href="/">ПРОФЕССОР <span>IT</span></a><a class="series-header-cta" href="/?utm_source=longread_series&utm_medium=content&utm_campaign=how_to_enter_it&utm_content=header#characters">Тест-драйв за 1 000 ₽</a></div></header>
-<main class="series-container">
+<main class="series-container" data-longread-part={part} data-longread-parts={parts.length}>
   <nav class="series-breadcrumb"><a href="/">Главная</a><span>›</span><span>Как войти в IT</span></nav>
   <div class="series-dots" aria-label={`Часть ${part} из 4`}>{parts.map((_,i)=><i class={i < part ? "active" : ""}></i>)}</div>
   {part>1 && <a class="series-back" href={withQuery(previous)}>← Часть {part-1}: {parts[part-2]}</a>}
   <header class="series-title"><div class="series-tags"><span>КАРЬЕРА В IT</span><span>ПРАКТИКА</span><b>ЧАСТЬ {part} ИЗ 4</b></div><h1>{title}</h1><div class="series-meta"><span>◉ Вадим Моисеенко</span><span>▦ 12 августа 2026</span><span>◷ {part===4?"15":"10"} минут</span></div><p>{description}</p></header>
   <article class="series-body"><slot /></article>
-  {next && <section class="series-next"><strong>{nextLabel}</strong><a href={withQuery(next)}>Читать часть {part+1} →</a></section>}
+  {next && <section class="series-next"><strong>{nextLabel}</strong><a data-longread-next href={withQuery(next)}>Читать часть {part+1} →</a></section>}
   <nav class="series-pagination">{previous?<a href={withQuery(previous)}><small>← Предыдущая</small><b>Часть {part-1}: {parts[part-2]}</b></a>:<span></span>}{next?<a href={withQuery(next)}><small>Следующая →</small><b>Часть {part+1}: {parts[part]}</b></a>:<span></span>}</nav>
 </main>
 <footer class="series-footer"><p>© {new Date().getFullYear()} Профессор IT · Персональное инженерное наставничество</p><a href="/privacy/">Политика конфиденциальности</a></footer>

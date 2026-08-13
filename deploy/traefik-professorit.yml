@@ -1,5 +1,21 @@
 http:
   routers:
+    professorit-public-api:
+      rule: "Host(`professorit.ru`) && PathPrefix(`/api/public/`)"
+      priority: 100
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      service: professorit-public-api
+    professorit-public-api-www:
+      rule: "Host(`www.professorit.ru`) && PathPrefix(`/api/public/`)"
+      priority: 100
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: letsencrypt
+      service: professorit-public-api
     professorit-site:
       rule: "Host(`professorit.ru`)"
       entryPoints:
@@ -16,6 +32,10 @@ http:
       service: professorit-site
 
   services:
+    professorit-public-api:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.122.10:18000"
     professorit-site:
       loadBalancer:
         servers:
