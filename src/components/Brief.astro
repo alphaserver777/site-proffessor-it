@@ -149,10 +149,16 @@ import { personas } from "../data/site";
   </form>
   <section class="brief-success" data-success hidden>
     <span class="success-mark">✓</span><h3>Заявка создана</h3><p>
-      Платёж на сайте пока не подключён. Выберите удобный мессенджер и напишите
-      <strong>«Хочу пройти тест-драйв»</strong>. Я лично подтвержу участие,
-      отправлю реквизиты и после оплаты выдам задание.
+      Вы выбрали профессию. Остался один шаг — безопасно оплатить
+      <strong>тест-драйв за 1 000 ₽</strong>. После подтверждения оплаты заявка
+      автоматически появится у меня в панели.
     </p>
+    <button class="button primary large payment-button" type="button" data-payment-button>
+      Перейти к оплате <b>1 000 ₽</b>
+    </button>
+    <div class="form-error payment-error" data-payment-error role="alert"></div>
+    <small class="payment-security">Платёж проводится на защищённой странице Prodamus</small>
+    <p class="contact-fallback">Если перед оплатой остался вопрос — напишите мне удобным способом</p>
     <div class="contact-choice" aria-label="Выберите удобный мессенджер">
       <a class="contact-option telegram" data-contact-channel="telegram" href="https://t.me/proffessor_it" target="_blank" rel="noreferrer">
         <span>Telegram</span><strong>Написать в Telegram</strong><small>Быстрый ответ и все материалы в одном чате</small>
@@ -161,6 +167,6 @@ import { personas } from "../data/site";
         <span>MAX</span><strong>Написать в MAX</strong><small>Если вы предпочитаете российский мессенджер</small>
       </a>
     </div>
-    <small class="contact-note">Оплата производится только после личного подтверждения условий и доступности места</small>
+    <small class="contact-note">Telegram и MAX остаются каналами связи, но подтверждение участия происходит автоматически после оплаты</small>
   </section>
 </dialog>
