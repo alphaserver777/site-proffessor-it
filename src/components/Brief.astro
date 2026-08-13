@@ -149,13 +149,18 @@ import { personas } from "../data/site";
   </form>
   <section class="brief-success" data-success hidden>
     <span class="success-mark">✓</span><h3>Заявка создана</h3><p>
-      Я свяжусь с вами, подтвержу оплату и отправлю доступ к мини-квесту. После
-      выполнения здесь откроется запись на личный разбор.
-    </p><a
-      class="button primary"
-      href="https://t.me/proffessorit_bot"
-      target="_blank"
-      rel="noreferrer">Открыть Telegram-бота</a
-    >
+      Платёж на сайте пока не подключён. Выберите удобный мессенджер и напишите
+      <strong>«Хочу пройти тест-драйв»</strong>. Я лично подтвержу участие,
+      отправлю реквизиты и после оплаты выдам задание.
+    </p>
+    <div class="contact-choice" aria-label="Выберите удобный мессенджер">
+      <a class="contact-option telegram" data-contact-channel="telegram" href="https://t.me/proffessor_it" target="_blank" rel="noreferrer">
+        <span>Telegram</span><strong>Написать в Telegram</strong><small>Быстрый ответ и все материалы в одном чате</small>
+      </a>
+      <a class="contact-option max" data-contact-channel="max" href="https://max.ru/u/f9LHodD0cOKSwTkPJdylbGaluZM4miWZqbpMcBD7uTVI8UGfJLvPabOTi08" target="_blank" rel="noreferrer">
+        <span>MAX</span><strong>Написать в MAX</strong><small>Если вы предпочитаете российский мессенджер</small>
+      </a>
+    </div>
+    <small class="contact-note">Оплата производится только после личного подтверждения условий и доступности места</small>
   </section>
 </dialog>
