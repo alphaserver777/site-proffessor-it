@@ -35,7 +35,7 @@ http:
     professorit-public-api:
       loadBalancer:
         servers:
-          - url: "http://192.168.122.10:18000"
+          - url: "http://host.docker.internal:8084"
     professorit-site:
       loadBalancer:
         servers:
