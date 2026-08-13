@@ -26,7 +26,7 @@ const randomId = () => crypto.randomUUID?.() || `${Date.now()}-${Math.random().t
 const visitorId = localStorage.getItem('professorit_visitor_id') || randomId();
 localStorage.setItem('professorit_visitor_id', visitorId);
 const params = new URLSearchParams(location.search);
-const attribution = Object.fromEntries(['utm_source','utm_medium','utm_campaign','utm_content'].map(key => [key, params.get(key) || localStorage.getItem(`professorit_${key}`) || '']));
+const attribution = Object.fromEntries(['utm_source','utm_medium','utm_campaign','utm_content','campaign_id'].map(key => [key, params.get(key) || localStorage.getItem(`professorit_${key}`) || '']));
 Object.entries(attribution).forEach(([key,value]) => value && localStorage.setItem(`professorit_${key}`, value));
 
 const metricaId = Number(document.documentElement.dataset.metricaId || 0);
