@@ -10,7 +10,14 @@ import Base from '../../../layouts/Base.astro';
       <p data-fail-copy>Деньги не списаны. Можно безопасно вернуться к оплате или задать вопрос перед продолжением.</p>
       <button class="button primary large" type="button" data-retry-payment>Повторить оплату</button>
       <div class="form-error" data-retry-error></div>
-      <div class="payment-result-links"><a href="https://t.me/proffessor_it">Telegram</a><a href="https://max.ru/u/f9LHodD0cOKSwTkPJdylbGaluZM4miWZqbpMcBD7uTVI8UGfJLvPabOTi08">MAX</a></div>
+      <div class="payment-result-links">
+        <strong>Возник вопрос перед оплатой?</strong>
+        <p>Напишите мне в удобном мессенджере — помогу разобраться и продолжить оформление тест-драйва.</p>
+        <div class="payment-channel-buttons">
+          <a class="button primary large" href="https://t.me/proffessor_it" target="_blank" rel="noreferrer">Написать в Telegram</a>
+          <a class="button large payment-max" href="https://max.ru/u/f9LHodD0cOKSwTkPJdylbGaluZM4miWZqbpMcBD7uTVI8UGfJLvPabOTi08" target="_blank" rel="noreferrer">Написать в MAX</a>
+        </div>
+      </div>
     </section>
   </main>
   <script>
