@@ -24,6 +24,17 @@ ssh vm-robots-dev1 'docker exec professorit-site nginx -t && \
   docker exec professorit-site nginx -s reload'
 ```
 
+If `deploy/nginx-site.conf` changed, deploy it separately and restart the
+container. The file is bind-mounted directly; an atomic file replacement on
+the host creates a new inode that an ordinary Nginx reload does not remount:
+
+```bash
+rsync -az deploy/nginx-site.conf \
+  vm-robots-dev1:/srv/proffessor-it/site-preview-current/nginx-site.conf
+ssh vm-robots-dev1 'docker restart professorit-site >/dev/null && \
+  docker exec professorit-site nginx -t'
+```
+
 Verify the public response, not only the files on disk:
 
 ```bash
