@@ -109,3 +109,13 @@ document.querySelectorAll<HTMLElement>('[data-profession], .profession-card').fo
 });
 
 track('longread_view', {part, title: document.title});
+
+let visibleSeconds = 0;
+const engagementThresholds = [15, 30, 60, 120];
+setInterval(() => {
+  if (document.visibilityState !== 'visible') return;
+  visibleSeconds += 1;
+  engagementThresholds.forEach(seconds => {
+    if (visibleSeconds >= seconds) track('longread_engaged', {part, engaged_seconds: seconds}, String(seconds));
+  });
+}, 1000);
