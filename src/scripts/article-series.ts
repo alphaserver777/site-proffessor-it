@@ -17,8 +17,9 @@ const randomId = () => crypto.randomUUID?.() || `${Date.now()}-${Math.random().t
 const visitorId = localStorage.getItem('professorit_visitor_id') || randomId();
 localStorage.setItem('professorit_visitor_id', visitorId);
 
-let sid = params.get('sid');
-if (!sid) sid = sessionStorage.getItem('professorit_longread_sid') || randomId();
+// A session belongs to this browser tab. Never trust a sid from the URL:
+// shared links would otherwise merge different readers into one journey.
+const sid = sessionStorage.getItem('professorit_longread_sid') || randomId();
 sessionStorage.setItem('professorit_longread_sid', sid);
 
 const firstTouchValue = (key: string) => {
@@ -85,7 +86,6 @@ document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(link => {
         const value = params.get(key) || localStorage.getItem(`professorit_${key}`);
         if (value && !url.searchParams.has(key)) url.searchParams.set(key, value);
       });
-      if (!url.searchParams.has('sid')) url.searchParams.set('sid', sid!);
       link.href = url.toString();
     }
   } catch {/* Ignore non-HTTP links. */}
