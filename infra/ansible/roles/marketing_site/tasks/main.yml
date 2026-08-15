@@ -1,0 +1,110 @@
+---
+- name: Create marketing site directory layout
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  loop:
+    - "{{ project_root }}"
+    - "{{ project_root }}/config"
+    - "{{ project_root }}/releases"
+    - "{{ project_root }}/bootstrap"
+    - "{{ project_root }}/acme"
+
+- name: Ensure Let's Encrypt base directory exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  loop:
+    - /etc/letsencrypt
+    - /etc/letsencrypt/renewal-hooks
+    - /etc/letsencrypt/renewal-hooks/deploy
+
+- name: Install temporary bootstrap page
+  ansible.builtin.copy:
+    dest: "{{ project_root }}/bootstrap/index.html"
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      <!doctype html>
+      <html lang="ru"><meta charset="utf-8"><title>Профессор IT</title>
+      <body><h1>Профессор IT</h1><p>Узел готов к публикации.</p></body></html>
+
+- name: Check whether a current release already exists
+  ansible.builtin.stat:
+    path: "{{ project_root }}/current"
+  register: current_release
+
+- name: Detect an existing production certificate
+  ansible.builtin.stat:
+    path: /etc/letsencrypt/live/professorit.ru/fullchain.pem
+  register: production_certificate
+
+- name: Point an empty host at the bootstrap page
+  ansible.builtin.file:
+    src: "{{ project_root }}/bootstrap"
+    dest: "{{ project_root }}/current"
+    state: link
+  when: not current_release.stat.exists
+
+- name: Render Nginx virtual host
+  ansible.builtin.template:
+    src: nginx-site.conf.j2
+    dest: "{{ project_root }}/config/default.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart marketing site
+
+- name: Render shared Nginx site locations
+  ansible.builtin.template:
+    src: site-locations.inc.j2
+    dest: "{{ project_root }}/config/site-locations.inc"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart marketing site
+
+- name: Install certificate renewal deploy hook
+  ansible.builtin.copy:
+    dest: /etc/letsencrypt/renewal-hooks/deploy/reload-professorit
+    owner: root
+    group: root
+    mode: "0755"
+    content: |
+      #!/bin/sh
+      cd {{ project_root }}
+      exec docker compose exec -T site nginx -s reload
+
+- name: Render Docker Compose project
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ project_root }}/compose.yml"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart marketing site
+
+- name: Start marketing site container
+  community.docker.docker_compose_v2:
+    project_src: "{{ project_root }}"
+    files:
+      - compose.yml
+    state: present
+    pull: missing
+
+- name: Flush site handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Verify bootstrap or current site
+  ansible.builtin.uri:
+    url: http://127.0.0.1/
+    headers:
+      Host: professorit.ru
+    status_code: 200

@@ -1,0 +1,78 @@
+---
+- name: Set system timezone
+  community.general.timezone:
+    name: "{{ timezone }}"
+
+- name: Install base production packages
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+      - certbot
+      - curl
+      - docker.io
+      - docker-compose-v2
+      - qemu-guest-agent
+      - rsync
+      - ufw
+      - unattended-upgrades
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Enable infrastructure services
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    enabled: true
+    state: started
+  loop:
+    - docker
+    - qemu-guest-agent
+    - unattended-upgrades
+    - certbot.timer
+
+- name: Allow deploy user to inspect Docker services
+  ansible.builtin.user:
+    name: deploy
+    groups: docker
+    append: true
+
+- name: Harden SSH using a validated drop-in
+  ansible.builtin.copy:
+    dest: /etc/ssh/sshd_config.d/60-professorit.conf
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      PermitRootLogin prohibit-password
+      X11Forwarding no
+      MaxAuthTries 4
+  notify: Restart SSH
+
+- name: Configure default incoming firewall policy
+  community.general.ufw:
+    direction: incoming
+    policy: deny
+
+- name: Configure default outgoing firewall policy
+  community.general.ufw:
+    direction: outgoing
+    policy: allow
+
+- name: Permit production ports
+  community.general.ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+    - "22"
+    - "80"
+    - "443"
+
+- name: Enable firewall
+  community.general.ufw:
+    state: enabled
+
+- name: Flush base handlers
+  ansible.builtin.meta: flush_handlers

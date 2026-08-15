@@ -1,0 +1,42 @@
+---
+- name: Issue and enable Professor IT TLS certificate
+  hosts: marketing_web
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Explain required public prerequisites
+      ansible.builtin.debug:
+        msg: >-
+          professorit.ru and www.professorit.ru must resolve to this host and
+          public TCP ports 80/443 must reach it before this playbook is run.
+
+    - name: Request certificate using the HTTP-01 webroot
+      ansible.builtin.command:
+        argv:
+          - certbot
+          - certonly
+          - --webroot
+          - --webroot-path
+          - "{{ project_root }}/acme"
+          - --domain
+          - professorit.ru
+          - --domain
+          - www.professorit.ru
+          - --email
+          - "{{ tls_contact_email }}"
+          - --agree-tos
+          - --non-interactive
+          - --keep-until-expiring
+        creates: /etc/letsencrypt/live/professorit.ru/fullchain.pem
+
+    - name: Re-apply marketing site role with TLS detected
+      ansible.builtin.include_role:
+        name: marketing_site
+
+    - name: Verify HTTPS using the issued certificate
+      ansible.builtin.uri:
+        url: https://professorit.ru/
+        status_code: 200
+        validate_certs: true
+

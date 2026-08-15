@@ -1,0 +1,83 @@
+---
+- name: Deploy versioned Professor IT static site
+  hosts: marketing_web
+  become: true
+  gather_facts: false
+
+  vars:
+    release_path: "{{ project_root }}/releases/{{ release_id }}"
+
+  pre_tasks:
+    - name: Require an explicit release identifier
+      ansible.builtin.assert:
+        that:
+          - release_id is defined
+          - release_id | length > 0
+        fail_msg: "Pass -e release_id=<git-sha-or-version>"
+
+  tasks:
+    - name: Create release directory
+      ansible.builtin.file:
+        path: "{{ release_path }}"
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Upload immutable static build
+      ansible.posix.synchronize:
+        src: "{{ playbook_dir }}/../../dist/"
+        dest: "{{ release_path }}/"
+        archive: true
+        delete: true
+        rsync_opts:
+          - "--chown=root:root"
+
+    - name: Point current symlink to the new release
+      ansible.builtin.file:
+        src: "{{ release_path }}"
+        dest: "{{ project_root }}/current"
+        state: link
+        force: true
+      notify: Reload marketing Nginx
+
+    - name: Apply pending handlers before checks
+      ansible.builtin.meta: flush_handlers
+
+    - name: Check essential site routes through local Nginx
+      ansible.builtin.uri:
+        url: "http://127.0.0.1{{ item }}"
+        headers:
+          Host: professorit.ru
+        status_code: 200
+        return_content: false
+      loop:
+        - /
+        - /guide/kak-voiti-v-it/
+        - /guide/kak-voiti-v-it/2/
+        - /guide/kak-voiti-v-it/3/
+        - /guide/kak-voiti-v-it/4/
+        - /payment/success/
+        - /payment/failed/
+
+    - name: Discover old releases
+      ansible.builtin.find:
+        paths: "{{ project_root }}/releases"
+        file_type: directory
+        recurse: false
+      register: deployed_releases
+
+    - name: Remove releases outside retention window
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ (deployed_releases.files | sort(attribute='mtime', reverse=true))[releases_to_keep:] }}"
+      when: deployed_releases.matched | int > releases_to_keep | int
+
+  handlers:
+    - name: Reload marketing Nginx
+      ansible.builtin.command:
+        cmd: docker compose exec -T site nginx -s reload
+        chdir: "{{ project_root }}"
+      changed_when: true
+

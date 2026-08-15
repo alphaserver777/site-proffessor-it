@@ -1,0 +1,38 @@
+server {
+    listen 80 default_server;
+    server_name professorit.ru www.professorit.ru _;
+    server_tokens off;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/acme;
+        default_type text/plain;
+    }
+
+{% if production_certificate.stat.exists %}
+    location / {
+        return 308 https://professorit.ru$request_uri;
+    }
+{% else %}
+    include /etc/nginx/professorit/site-locations.inc;
+{% endif %}
+}
+
+{% if production_certificate.stat.exists %}
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name professorit.ru www.professorit.ru;
+    server_tokens off;
+
+    ssl_certificate /etc/letsencrypt/live/professorit.ru/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/professorit.ru/privkey.pem;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    include /etc/nginx/professorit/site-locations.inc;
+}
+{% endif %}
+

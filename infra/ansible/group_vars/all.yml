@@ -1,0 +1,14 @@
+---
+project_name: professorit
+project_root: /srv/professorit
+releases_to_keep: 5
+timezone: Europe/Moscow
+
+# Until the application API is migrated, public API requests are sent to the
+# existing production edge by IP. SNI and Host preserve the old Traefik route
+# after professorit.ru is switched to the Russian address.
+legacy_api_ip: 176.9.11.143
+legacy_api_sni: professorit.ru
+
+site_container_image: nginx:1.30-alpine
+tls_contact_email: moiseenko.business@mail.ru
