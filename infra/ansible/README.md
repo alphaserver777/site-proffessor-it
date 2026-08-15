@@ -41,8 +41,8 @@ curl -I -H 'Host: professorit.ru' http://192.168.50.111/guide/kak-voiti-v-it/
 ```
 
 TLS завершается на центральном Traefik LXC `192.168.50.112`; эта VM остаётся
-внутренним HTTP backend. До переноса backend маршрут `/api/public/*`
-проксируется на действующий production edge с корректными Host и SNI.
+внутренним HTTP backend. Маршрут `/api/public/*` и кабинет используют локальные
+контейнеры API/frontend через закрытую сеть `professorit_runtime`.
 
 ## Standalone HTTPS fallback
 
