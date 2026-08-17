@@ -1,4 +1,9 @@
-# Production deployment
+# Legacy production deployment
+
+> Этот документ относится к выведенному немецкому контуру и сохранён только
+> для истории. Текущий deploy выполняется через `infra/ansible/deploy.sh` в VM
+> 201. См. корневой `README.md` и `infra/ansible/README.md`. Команды ниже не
+> применять к production.
 
 The public path is:
 
